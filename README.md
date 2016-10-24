@@ -7,6 +7,7 @@
 ### Day 1
 
 Listing of modules (buzzword & idea for hands-on):
+- FGCZ and a core facility for Zurich Lifesciences community
 - Mass spectrometry & protein analytics 
 - Protein identification w mass spectrometry & databases // Wrkshp: digest & theoretical considerations about search space and different DBs
 - MS and different activation techniques // Wrkshp: protViz & labelling of spectra
