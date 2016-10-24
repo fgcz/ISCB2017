@@ -33,3 +33,11 @@ Listing of modules (buzzword & idea for hands-on):
 
 ### Day 4
 - Socio Economics
+--> Fromm Ingrid, email: ingrid.fromm@bfh.ch, 031 910 2192 
+--> https://www.linkedin.com/in/ingrid-fromm-phd-8a74085b
+
+
+## Publications to study (upfront)
+- Review (Aebersold)
+- MQ (Mann..)
+- Weisser.. 
