@@ -54,9 +54,11 @@ Conclusion of day 3 | Q & A | 1h | xxx | to-be-prepared
 ### Day 4
 
 - Socio Economics
---> Fromm Ingrid, email: ingrid.fromm@bfh.ch, 031 910 2192 
---> https://www.linkedin.com/in/ingrid-fromm-phd-8a74085b
---> http://www.hafl.bfh.ch/?id=625&no_cache=1&tx_smemployeelist_pi1[empID]=329
+-> Phone Call scheduled Thursday, 27th of Oct.
+- email: ingrid.fromm@bfh.ch
+- phone: 031 910 2192 
+- LI: https://www.linkedin.com/in/ingrid-fromm-phd-8a74085b
+
 
 
 ## Organisational issues:
