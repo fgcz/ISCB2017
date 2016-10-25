@@ -9,13 +9,14 @@
 **Listing of modules (buzzword & idea for hands-on):**
 - This week (outline, instructors, goals)
 - FGCZ (Functional Genomics Center Zurich) a core facility for Zurich Lifesciences community
-- Mass spectrometry & protein analytics 
+- Mass spectrometry & protein analytics
+- Getting ready for the hands-on sessions (Pre-requisities) // Wrkshp: Install MQ on students laptops, check-out, commit with git.
 - Protein identification w mass spectrometry & databases // Wrkshp: digest & theoretical considerations about search space and different DBs
 - MS and different activation techniques // Wrkshp: protViz & labelling of spectra
 - Validation of database results using target-decoy strategy // Wrkshp: filter lists and calculate FDRs on different levels 
 - PTMs
 - Experimental desgin (potential pitfalls) // Wrkshp: annotation in Bfabric
-- Tools for protein identification // Wrkshp: get MQ installed and run it
+- Tools for protein identification // Wrkshp: Look at 
 - Conclusion day 1
 
 
@@ -48,7 +49,7 @@
 (check here for templates: https://lgatto.github.io/2014-11-06-UZH/)
 
 ### Student should bring:
-- own laptop
+- own laptop (Windows or Mac/Linux w Virtual Box and Windows instance)
 - equiped with: Editor (vi, nano, ..), R., RStudio, git
 - some free space (20gigs at least)
 
