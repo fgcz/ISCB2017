@@ -17,6 +17,10 @@ The FGCZ in Zurich | browse FGCZ page | 0.5 h | xxx
 Mass spectrometry (and protein analytics) | browse around for milestones in MS, form groups, introduce yourself | 1 h | xxx
 Getting ready for hands-on sessions | Install MQ, do git co, commits, get R packages | 2 h | xxx
 Protein identification with search engines | get fasta, R (seqinR), R (digest), theoretical considerations about search space, different DBs, uniqueness of peptides | 2h | xxx
+MS and different activiation techniques | protViz & mgfs & labelling of spectra | 1h | xxx
+PTMs | ?? | 1h | xxx
+Experimental design in proteomcis experiments | Annotation of samples in Bfabric | 1h | xxx
+Conclusion of day 1 | Q & A | 1h | xxx
 
 
 - This week (outline, instructors, goals)
@@ -37,8 +41,6 @@ Protein identification with search engines | get fasta, R (seqinR), R (digest), 
 
 - Experimental desgin (potential pitfalls) // Wrkshp: annotation in Bfabric
 
-- Tools for protein identification // Wrkshp: Look at 
-
 - Conclusion day 1
 
 
@@ -46,6 +48,7 @@ Protein identification with search engines | get fasta, R (seqinR), R (digest), 
 
 ### Day 2
 - Repetition and wrap up of Day 1
+- Tools for protein identification // Wrkshp: Look at 
 
 - Quantitative proteomics strategies (an overview)
 
