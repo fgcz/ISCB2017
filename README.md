@@ -23,60 +23,31 @@ Experimental design in proteomcis experiments | Annotation of samples in Bfabric
 Conclusion of day 1 | Q & A | 1h | xxx
 
 
-- This week (outline, instructors, goals)
-
-- FGCZ (Functional Genomics Center Zurich) a core facility for Zurich Lifesciences community
-
-- Mass spectrometry & protein analytics
-
-- Getting ready for the hands-on sessions (Pre-requisities) // Wrkshp: Install MQ on students laptops, check-out, commit with git.
-
-- Protein identification w mass spectrometry & databases // Wrkshp: digest & theoretical considerations about search space and different DBs
-
-- MS and different activation techniques // Wrkshp: protViz & labelling of spectra
-
-- Validation of database results using target-decoy strategy // Wrkshp: filter lists and calculate FDRs on different levels 
-
-- PTMs
-
-- Experimental desgin (potential pitfalls) // Wrkshp: annotation in Bfabric
-
-- Conclusion day 1
-
-
-
 
 ### Day 2
-- Repetition and wrap up of Day 1
-- Tools for protein identification // Wrkshp: Look at 
 
-- Quantitative proteomics strategies (an overview)
-
-- Label-free quantification // Wrkshp: txt-tables of MQ
-
-- Quantitative protein matrices // Wrkshp: Visualizing QMs
-
-- Two group designs for Yeast, grown on different nutrient sources // Wrkshp: Analysing 2 groups
-
-- Conclusion day 2
-
+Theory Module | Hands-on Module | Duration | Responsible person
+------------ | ------------- | ------------- | ------------- 
+Repetition and wrap up of Day 1 | Q & A | 0.5 h | xxx
+Tools for protein identification | Look at MQ and start a search | 1h | xxx
+Quantitative proteomics strategies (an overview) | break | 1h | xxx
+Label-free quantification | MQ: txt-tables | 1h | xxx
+Quantitative protein matrices | Visualizing QMs in R. | 1h | xxx
+Two group analysis for Yeast, grown on different nutrient sources | Analysing 2 groups in R. | 2h | xxx
+Conclusion of day 2 | Q & A | 1h | xxx
 
 
 
 ### Day 3
-- Repetition and wrap up of Day 2
-
-- Model organisms vs custom databases 
-
-- Webtools for model organisms // Wrkshp: Visualizing results on a cellular overview map (YeastCyc)
-
-- Principle of ORAs // Wrkshp: Webgestalt w YEAST results
-
-- Other programmatic tools for downstream analysis (BiomaRt, StringDB, Setrank) // Wrkshp: Biomart, String, Setrank
-
-- RNAseq vs LFQ, What is to expect // Wrkshp: Number game, log2Correlation
-
-- Conclusion day 3
+Theory Module | Hands-on Module | Duration | Responsible person
+------------ | ------------- | ------------- | ------------- 
+Repetition and wrap up of Day 2| Q & A | 0.5 h | xxx
+Model organisms vs custom databases | Pigeon pea DB? status? | 1h | xxx
+Webtools for model organisms | Visualizing results on a cellular overview map (YeastCyc) | 1h | xxx
+Principle of ORAs |  Webgestalt w YEAST results | 1h | xxx
+Other programmatic tools for downstream analysis (BiomaRt, StringDB, Setrank) | Biomart, String, Setrank | 1h | xxx
+RNAseq vs LFQ, What is to expect | Number game, log2Correlation | 1h | xxx
+Conclusion of day 3 | Q & A | 1h | xxx
 
 
 
