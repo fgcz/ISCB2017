@@ -32,7 +32,7 @@ Repetition and wrap up of Day 1 | Q & A | 0.5 h | xxx | to-be-prepared (conclusi
 Tools for protein identification | Look at MQ and start a search | 1h | xxx | to-be-prepared
 Quantitative proteomics strategies (an overview) | break | 1h | xxx | Combo-course day4 (NSK)
 Label-free quantification | MQ: txt-tables | 1h | xxx | Combo-course day4 (partI)
-Quantitative protein matrices | Visualizing QMs in R. | 1h | xxx | Combo-course day4 (partII)
+Quantitative protein matrices | Visualizing QMs in R. quantable (Witold) | 1h | xxx | Combo-course day4 (partII)
 Two group analysis for Yeast, grown on different nutrient sources | Analysing 2 groups in R. | 2h | xxx | to-be-prepared
 Conclusion of day 2 | Q & A | 1h | xxx | to-be-prepared
 
