@@ -58,6 +58,17 @@ Conclusion of day 3 | Q & A | 1h | xxx | to-be-prepared
 --> https://www.linkedin.com/in/ingrid-fromm-phd-8a74085b
 --> http://www.hafl.bfh.ch/?id=625&no_cache=1&tx_smemployeelist_pi1[empID]=329
 
+Phone conference: Thu, 27.10.2016 (11.45 - 12:03)
+- first get in touch: Week: 23.-27. January -> Tentatively fixed.. !!
+- where do you see common ground? Where? -> aware of the problem?
+--> somebody from ETH doing socio economics.. (Ralph?)
+--> Overview of Socio Enomics .. 
+
+- what do you do?
+--> We get a simple presentation.. & I will send something similar.. 
+- what kind of data do you have? --> we will find out from her presentations
+- what kind of statistics do you do? --> we will find out from her presentations 
+
 
 ## Organisational issues:
 (check here for templates: https://lgatto.github.io/2014-11-06-UZH/)
@@ -71,10 +82,11 @@ Conclusion of day 3 | Q & A | 1h | xxx | to-be-prepared
 ## Students
 - 8-10 PhD students/postdocs
 - some knowledge of biology
-- proven skills in at least one of the following programming languages (R, python)
+- proven skills in (ideally) R (or python)
 
 
 ## Publications to study (upfront)
 - Review (Aebersold n Mann) -> https://www.ncbi.nlm.nih.gov/pubmed/27629641
-- MQ (Mann..)
-- Weisser.. 
+- MQ -> https://www.ncbi.nlm.nih.gov/pubmed/24942700
+- LFQ -> https://www.ncbi.nlm.nih.gov/pubmed/23391308
+- MSQC1 -> https://www.ncbi.nlm.nih.gov/pubmed/27130639
