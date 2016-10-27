@@ -16,9 +16,9 @@ Outline for this week | break | 0.5 h | xxx | at the very end (show 1)
 The FGCZ in Zurich | browse FGCZ page | 0.5 h | xxx | Jonas prepares it (show 2)
 Mass spectrometry (and protein analytics) | browse around for milestones in MS, form groups, introduce yourself | 1 h | xxx | Combo course day2 first slides
 Getting ready for hands-on sessions | Install MQ, do git co, commits, get R packages | 2 h | xxx | to-be-prepared
-Protein identification with search engines | get fasta, R (seqinR), R (digest), theoretical considerations about search space, different DBs, uniqueness of peptides. Restricted unrestricted search | 2h | xxx | workshop to be prepared (cp,wew)
+Protein identification with search engines | get fasta, R (seqinR), R (digest), theoretical considerations about search space, different DBs, uniqueness of peptides.  | 2h | xxx | workshop to be prepared (cp)
 MS and different activiation techniques | protViz & mgfs & labelling of spectra | 1h | xxx
-PTMs | ?? | 1h | xxx | Theo part (ETH lecture) , workshop!
+PTMs | restricted and unrestricted search, spectral library search (wew) | 1h | xxx | Theo part (ETH lecture) , workshop!
 Experimental design in proteomcis experiments | Annotation of samples in Bfabric | 1h | xxx | to-be-prepared
 Conclusion of day 1 | Q & A | 1h | xxx | to-be-prepared
 
