@@ -65,11 +65,17 @@ Phone conference: Thu, 27.10.2016 (11.45 - 12:03)
 - where do you see common ground? Where? -> aware of the problem?
 --> somebody from ETH doing socio economics.. (Ralph?)
 --> Overview of Socio Enomics .. 
-
 - what do you do?
 --> We get a simple presentation.. & I will send something similar.. 
 - what kind of data do you have? --> we will find out from her presentations
 - what kind of statistics do you do? --> we will find out from her presentations 
+- After reading the presentation I will have a hard time to find common ground
+
+Presentation content:
+- Regional aspects with respect to production over the past decades
+- Which varieties are grown where? 
+- Which aspects are important for growing this variety and not the other
+
 
 
 ## Organisational issues:
