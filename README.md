@@ -16,11 +16,11 @@ Outline for this week | break | 0.5 h | xxx | tbd at the very end (show 1)
 The FGCZ in Zurich | browse FGCZ page | 0.5 h | xxx | Jonas prepares it (show 2)
 Mass spectrometry (and protein analytics) | browse around for milestones in MS, form groups, introduce yourself | 1 h | xxx | Combo course day2 first slides (show 3)
 Getting ready for hands-on sessions | Install MQ, do git co, commits, get R packages | 2 h | xxx | to-be-prepared (show 4)
-Protein identification with search engines | get fasta, R (seqinR), R (digest), theoretical considerations about search space, different DBs, uniqueness of peptides.  | 2h | xxx | workshop to be prepared (cp) (show 56
-MS and different activiation techniques | protViz & mgfs & labelling of spectra | 1h | xxx (show 5)
-PTMs | restricted and unrestricted search, spectral library search (wew) | 1h | xxx | Theo part (ETH lecture) , workshop! (show 6)
-Experimental design in proteomcis experiments | Annotation of samples in Bfabric | 1h | xxx | to-be-prepared (show 7)
-Conclusion of day 1 | Q & A | 1h | xxx | to-be-prepared (show 8)
+Protein identification with search engines | get fasta, R (seqinR), R (digest), theoretical considerations about search space, different DBs, uniqueness of peptides.  | 2h | xxx | workshop to be prepared (cp) (show 5)
+MS and different activiation techniques | protViz & mgfs & labelling of spectra | 1h | xxx (show 6)
+PTMs | restricted and unrestricted search, spectral library search (wew) | 1h | xxx | Theo part (ETH lecture) , workshop! (show 7)
+Experimental design in proteomcis experiments | Annotation of samples in Bfabric | 1h | xxx | to-be-prepared (show 8)
+Conclusion of day 1 | Q & A | 1h | xxx | to-be-prepared (show 9)
 
 
 
@@ -28,26 +28,26 @@ Conclusion of day 1 | Q & A | 1h | xxx | to-be-prepared (show 8)
 
 Theory Module | Hands-on Module | Duration | Responsible person | Action needed
 ------------ | ------------- | ------------- | ------------- | -------------  
-Repetition and wrap up of Day 1 | Q & A | 0.5 h | xxx | to-be-prepared (conclusion day1) (show 9)
-Tools for protein identification | Look at MQ and start a search | 1h | xxx | to-be-prepared (show 10)
-Quantitative proteomics strategies (an overview) | break | 1h | xxx | Combo-course day4 (NSK) (show 11)
-Label-free quantification | MQ: txt-tables | 1h | xxx | Combo-course day4 (partI) (show 12) 
-Quantitative protein matrices | Visualizing QMs in R. R-quantable  | 1h | (wew?) | Combo-course day4 (partII) (show 13)
-Two group analysis for Yeast, grown on different nutrient sources | Analysing 2 groups in R-quantable | 2h | (wew?) | to-be-prepared (show 14)
-Conclusion of day 2 | Q & A | 1h | xxx | to-be-prepared (show 15)
+Repetition and wrap up of Day 1 | Q & A | 0.5 h | xxx | to-be-prepared (conclusion day1) (show 10)
+Tools for protein identification | Look at MQ and start a search | 1h | xxx | to-be-prepared (show 11)
+Quantitative proteomics strategies (an overview) | break | 1h | xxx | Combo-course day4 (NSK) (show 12)
+Label-free quantification | MQ: txt-tables | 1h | xxx | Combo-course day4 (partI) (show 13) 
+Quantitative protein matrices | Visualizing QMs in R. R-quantable  | 1h | (wew?) | Combo-course day4 (partII) (show 14)
+Two group analysis for Yeast, grown on different nutrient sources | Analysing 2 groups in R-quantable | 2h | (wew?) | to-be-prepared (show 15)
+Conclusion of day 2 | Q & A | 1h | xxx | to-be-prepared (show 16)
 
 
 
 ### Day 3
 Theory Module | Hands-on Module | Duration | Responsible person | Action needed
 ------------ | ------------- | ------------- | ------------- | -------------  
-Repetition and wrap up of Day 2| Q & A | 0.5 h | xxx | to-be-prepared (show 16)
-Model organisms vs custom databases | Pigeon pea DB? status? | 1h | xxx | to-be-prepared (show 17)
-Webtools for model organisms | Visualizing results on a cellular overview map (YeastCyc) | 1h | xxx | to-be-prepared (show 18)
-Principle of ORAs |  Webgestalt w YEAST results | 1h | xxx | Combo-course day4 (partI) (show 19)
-Other programmatic tools for downstream analysis (BiomaRt, StringDB, Setrank) | Biomart, String, Setrank | 1h | xxx | to-be-prepared (show 20)
-RNAseq vs LFQ, What is to expect | Number game, log2Correlation | 1h | xxx | Combo-course day5 (show 21)
-Conclusion of day 3 | Q & A | 1h | xxx | to-be-prepared (show 22)
+Repetition and wrap up of Day 2| Q & A | 0.5 h | xxx | to-be-prepared (show 17)
+Model organisms vs custom databases | Pigeon pea DB? status? | 1h | xxx | to-be-prepared (show 18)
+Webtools for model organisms | Visualizing results on a cellular overview map (YeastCyc) | 1h | xxx | to-be-prepared (show 19)
+Principle of ORAs |  Webgestalt w YEAST results | 1h | xxx | Combo-course day4 (partI) (show 20)
+Other programmatic tools for downstream analysis (BiomaRt, StringDB, Setrank) | Biomart, String, Setrank | 1h | xxx | to-be-prepared (show 21)
+RNAseq vs LFQ, What is to expect | Number game, log2Correlation | 1h | xxx | Combo-course day5 (show 22)
+Conclusion of day 3 | Q & A | 1h | xxx | to-be-prepared (show 23)
 
 
 
