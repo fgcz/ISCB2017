@@ -4,7 +4,7 @@
 
 ## Idea: Little modules (theory.. and respective hands-on session)
 
-**Listing of modules (buzzword & idea for hands-on):**
+**Listing of modules (buzzword & idea for hands-on & Duration & repsonisble person & what still needs to be done):**
 
 
 
@@ -12,15 +12,15 @@
 
 Theory Module | Hands-on Module | Duration | Responsible person | Action needed
 ------------ | ------------- | ------------- | ------------- | ------------- 
-Outline for this week | break | 0.5 h | xxx | at the very end (show 1)
+Outline for this week | break | 0.5 h | xxx | tbd at the very end (show 1)
 The FGCZ in Zurich | browse FGCZ page | 0.5 h | xxx | Jonas prepares it (show 2)
-Mass spectrometry (and protein analytics) | browse around for milestones in MS, form groups, introduce yourself | 1 h | xxx | Combo course day2 first slides
-Getting ready for hands-on sessions | Install MQ, do git co, commits, get R packages | 2 h | xxx | to-be-prepared
-Protein identification with search engines | get fasta, R (seqinR), R (digest), theoretical considerations about search space, different DBs, uniqueness of peptides.  | 2h | xxx | workshop to be prepared (cp)
-MS and different activiation techniques | protViz & mgfs & labelling of spectra | 1h | xxx
-PTMs | restricted and unrestricted search, spectral library search (wew) | 1h | xxx | Theo part (ETH lecture) , workshop!
-Experimental design in proteomcis experiments | Annotation of samples in Bfabric | 1h | xxx | to-be-prepared
-Conclusion of day 1 | Q & A | 1h | xxx | to-be-prepared
+Mass spectrometry (and protein analytics) | browse around for milestones in MS, form groups, introduce yourself | 1 h | xxx | Combo course day2 first slides (show 3)
+Getting ready for hands-on sessions | Install MQ, do git co, commits, get R packages | 2 h | xxx | to-be-prepared (show 4)
+Protein identification with search engines | get fasta, R (seqinR), R (digest), theoretical considerations about search space, different DBs, uniqueness of peptides.  | 2h | xxx | workshop to be prepared (cp) (show 4)
+MS and different activiation techniques | protViz & mgfs & labelling of spectra | 1h | xxx (show 5)
+PTMs | restricted and unrestricted search, spectral library search (wew) | 1h | xxx | Theo part (ETH lecture) , workshop! (show 5)
+Experimental design in proteomcis experiments | Annotation of samples in Bfabric | 1h | xxx | to-be-prepared (show 6)
+Conclusion of day 1 | Q & A | 1h | xxx | to-be-prepared (show 7)
 
 
 
@@ -28,26 +28,26 @@ Conclusion of day 1 | Q & A | 1h | xxx | to-be-prepared
 
 Theory Module | Hands-on Module | Duration | Responsible person | Action needed
 ------------ | ------------- | ------------- | ------------- | -------------  
-Repetition and wrap up of Day 1 | Q & A | 0.5 h | xxx | to-be-prepared (conclusion day1)
-Tools for protein identification | Look at MQ and start a search | 1h | xxx | to-be-prepared
-Quantitative proteomics strategies (an overview) | break | 1h | xxx | Combo-course day4 (NSK)
-Label-free quantification | MQ: txt-tables | 1h | xxx | Combo-course day4 (partI)
-Quantitative protein matrices | Visualizing QMs in R. R-quantable  | 1h | (wew?) | Combo-course day4 (partII)
-Two group analysis for Yeast, grown on different nutrient sources | Analysing 2 groups in R-quantable | 2h | (wew?) | to-be-prepared
-Conclusion of day 2 | Q & A | 1h | xxx | to-be-prepared
+Repetition and wrap up of Day 1 | Q & A | 0.5 h | xxx | to-be-prepared (conclusion day1) (show 8)
+Tools for protein identification | Look at MQ and start a search | 1h | xxx | to-be-prepared (show 9)
+Quantitative proteomics strategies (an overview) | break | 1h | xxx | Combo-course day4 (NSK) (show 10)
+Label-free quantification | MQ: txt-tables | 1h | xxx | Combo-course day4 (partI) (show 11) 
+Quantitative protein matrices | Visualizing QMs in R. R-quantable  | 1h | (wew?) | Combo-course day4 (partII) (show 12)
+Two group analysis for Yeast, grown on different nutrient sources | Analysing 2 groups in R-quantable | 2h | (wew?) | to-be-prepared (show 13)
+Conclusion of day 2 | Q & A | 1h | xxx | to-be-prepared (show 14)
 
 
 
 ### Day 3
 Theory Module | Hands-on Module | Duration | Responsible person | Action needed
 ------------ | ------------- | ------------- | ------------- | -------------  
-Repetition and wrap up of Day 2| Q & A | 0.5 h | xxx | to-be-prepared
-Model organisms vs custom databases | Pigeon pea DB? status? | 1h | xxx | to-be-prepared
-Webtools for model organisms | Visualizing results on a cellular overview map (YeastCyc) | 1h | xxx | to-be-prepared
-Principle of ORAs |  Webgestalt w YEAST results | 1h | xxx | Combo-course day4 (partI)
-Other programmatic tools for downstream analysis (BiomaRt, StringDB, Setrank) | Biomart, String, Setrank | 1h | xxx | to-be-prepared
-RNAseq vs LFQ, What is to expect | Number game, log2Correlation | 1h | xxx | Combo-course day5
-Conclusion of day 3 | Q & A | 1h | xxx | to-be-prepared
+Repetition and wrap up of Day 2| Q & A | 0.5 h | xxx | to-be-prepared (show 15)
+Model organisms vs custom databases | Pigeon pea DB? status? | 1h | xxx | to-be-prepared (show 16)
+Webtools for model organisms | Visualizing results on a cellular overview map (YeastCyc) | 1h | xxx | to-be-prepared (show 17)
+Principle of ORAs |  Webgestalt w YEAST results | 1h | xxx | Combo-course day4 (partI) (show 18)
+Other programmatic tools for downstream analysis (BiomaRt, StringDB, Setrank) | Biomart, String, Setrank | 1h | xxx | to-be-prepared (show 19)
+RNAseq vs LFQ, What is to expect | Number game, log2Correlation | 1h | xxx | Combo-course day5 (show 20)
+Conclusion of day 3 | Q & A | 1h | xxx | to-be-prepared (show 21)
 
 
 
@@ -71,7 +71,7 @@ Phone conference: Thu, 27.10.2016 (11.45 - 12:03)
 - what kind of statistics do you do? --> we will find out from her presentations 
 - After reading the presentation I will have a hard time to find common ground
 
-Presentation content:
+Presentation content (I. Fromm):
 - Regional aspects with respect to production over the past decades
 - Which varieties are grown where? 
 - Which aspects are important for growing this variety and not the other
@@ -89,7 +89,7 @@ Presentation content:
 
 ## Students
 - 8-10 PhD students/postdocs
-- some knowledge of biology
+- some knowledge of biology (DNA -> mRNA -> Proteins -> Proteinfuntions (enzymes)
 - proven skills in (ideally) R (or python)
 
 
