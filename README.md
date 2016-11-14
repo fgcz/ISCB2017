@@ -76,6 +76,13 @@ Presentation content (I. Fromm):
 - Which varieties are grown where? 
 - Which aspects are important for growing this variety and not the other
 
+### Common Ground: (potentially on day 1)
+- How is your data "sampled"?
+- What is the N?
+- How is N defined?
+- How are outliers identified and handled?
+- How are missing values handled?
+- What statistics are used to analyze the data?
 
 
 ## Organisational issues:
