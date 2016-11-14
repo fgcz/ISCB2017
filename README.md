@@ -12,9 +12,9 @@
 
 Theory Module | Hands-on Module | Duration | Responsible person | Action needed
 ------------ | ------------- | ------------- | ------------- | ------------- 
-Outline for this week | break | 0.5 h | xxx | tbd at the very end (show 1)
-The FGCZ in Zurich | browse FGCZ page | 0.5 h | xxx | Jonas prepares it (show 2)
-Mass spectrometry (and protein analytics) | browse around for milestones in MS, form groups, introduce yourself | 1 h | xxx | Combo course day2 first slides (show 3)
+Outline for this week | break | 0.5 h | j | tbd at the very end (show 1)
+The FGCZ in Zurich | browse FGCZ page | 0.5 h | j | Jonas prepares it (show 2)
+Mass spectrometry (and protein analytics) | browse around for milestones in MS, form groups, introduce yourself | 1 h | j | Combo course day2 first slides (show 3)
 Getting ready for hands-on sessions | Install MQ, do git co, commits, get R packages | 2 h | xxx | to-be-prepared (show 4)
 Protein identification with search engines | get fasta, R (seqinR), R (digest), theoretical considerations about search space, different DBs, uniqueness of peptides.  | 2h | xxx | workshop to be prepared (cp) (show 5)
 MS and different activiation techniques | protViz & mgfs & labelling of spectra | 1h | xxx | (show 6)
