@@ -108,5 +108,8 @@ Presentation content (I. Fromm):
 
 
 ## Notes by CP
-- add visualization techniques 15min from combined course plus t-test alternative for boxplot N(0,1) distribution example. 
-
+### add visualization techniques 15min from combined course 
+- plus t-test alternative for boxplot N(0,1) distribution example. 
+### References
+- Visualizing data, William S. Cleveland, Murray Hill, New Jersey : AT&T Bell Laboratories 1993
+- Lattice, Multivariate Data Visualization with R, Deepayan Sarkar , 2008
