@@ -105,3 +105,8 @@ Presentation content (I. Fromm):
 - MQ -> https://www.ncbi.nlm.nih.gov/pubmed/24942700
 - LFQ -> https://www.ncbi.nlm.nih.gov/pubmed/23391308
 - MSQC1 -> https://www.ncbi.nlm.nih.gov/pubmed/27130639
+
+
+## Notes by CP
+- add visualization techniques 15min from combined course plus t-test alternative for boxplot N(0,1) distribution example. 
+
