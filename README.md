@@ -43,7 +43,7 @@ Conclusion of day 2 | Q & A | 1h | jg | to-be-prepared (show 16)
 Theory Module | Hands-on Module | Duration | Responsible person | Action needed
 ------------ | ------------- | ------------- | ------------- | -------------  
 Repetition and wrap up of Day 2| Q & A | 0.5 h | cp | to-be-prepared (show 17)
-Model organisms vs custom databases | Pigeon pea DB? status? | 1h | jg | to-be-prepared (show 18)
+Model organisms vs custom databases / blast | Pigeon pea DB? status? / blast| 1h | jg/cp | to-be-prepared (show 18)
 Webtools for model organisms | Visualizing results on a cellular overview map (YeastCyc) | 1h | cpNjg | to-be-prepared (show 19)
 Principle of ORAs |  Webgestalt w YEAST results | 1h | jg | Combo-course day4 (partI) (show 20)
 Other programmatic tools for downstream analysis (BiomaRt, StringDB, Setrank) | Biomart, String, Setrank | 1h | cpNwew | to-be-prepared (show 21)
