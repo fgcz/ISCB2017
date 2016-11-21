@@ -106,6 +106,7 @@ Presentation content (I. Fromm):
 - MQ -> https://www.ncbi.nlm.nih.gov/pubmed/24942700
 - LFQ -> https://www.ncbi.nlm.nih.gov/pubmed/23391308
 - MSQC1 -> https://www.ncbi.nlm.nih.gov/pubmed/27130639
+- Volcano Plot -> https://www.ncbi.nlm.nih.gov/pubmed/27272648
 
 
 ## Notes by CP
