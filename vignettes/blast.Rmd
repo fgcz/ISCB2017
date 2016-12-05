@@ -1,5 +1,28 @@
 # Howto homology annotate fasta
 
-```bash
-blastn 
+
 ```
+ncbi-blast-2.5.0+/bin/blastp
+```
+
+## input 
+
+
+### prep
+
+```sh
+makeblastdb -dbtype prot -in fasta/uniprot/uniprot-proteome%3AUP000059680.fasta 
+makeblastdb -dbtype prot -in fasta/uniprot/uniprot-proteome%3AUP000006548.fasta 
+
+```
+
+```{r}
+S <- fromJSON("/scratch/ISCB2017/data/out_1.json")   
+
+S$BlastOutput2$report$results$bl2seq$hits[[1]]$description[[1]]$title
+S$BlastOutput2$report$results$bl2seq$hits[[1]]$description[[1]]$title        
+
+```
+
+
+
