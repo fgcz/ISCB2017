@@ -1,0 +1,5 @@
+# Howto homology annotate fasta
+
+```bash
+blastn 
+```
