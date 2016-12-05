@@ -17,9 +17,13 @@ makeblastdb -dbtype prot -in fasta/uniprot/uniprot-proteome%3AUP000006548.fasta
 ```
 
 ```{r}
+package.install(jsonlite)
+```
+
+```{r}
 S <- fromJSON("/scratch/ISCB2017/data/out_1.json")   
 
-S$BlastOutput2$report$results$bl2seq$hits[[1]]$description[[1]]$title
+S$BlastOutput2$report$results$bl2seq$hits[[1]]$description
 S$BlastOutput2$report$results$bl2seq$hits[[1]]$description[[1]]$title        
 
 ```
