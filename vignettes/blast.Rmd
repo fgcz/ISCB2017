@@ -51,17 +51,18 @@ S <- fromJSON("/scratch/ISCB2017/data/59680.json")
 
 res <- lapply(FILES[idx], function(x){
   S <- fromJSON(x); 
-  query_title=NULL
+  title <-NULL
+  
   if(length(S$BlastOutput2$report$results$search$hits)>0){
-    query_title <- S$BlastOutput2$report$results$search$query_title
+     title <- S$BlastOutput2$report$results$search$hits$description[[1]]$title
     }
     
   cbind(file=x,
     expect=S$BlastOutput2$report$params$expect, 
-    query_title=query_title,
+    query_title=S$BlastOutput2$report$results$search$query_title,
     title=S$BlastOutput2$report$results$search$hits$description[[1]]$title)  
-   
-    })                 
+    
+   })                 
 
 
 res <- do.call('rbind', res)
