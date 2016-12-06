@@ -18,7 +18,7 @@ makeblastdb -dbtype prot -in fasta/uniprot/uniprot-proteome%3AUP000006548.fasta
 # uniprot-proteome%3AUP000059680.fasta
 # uniprot-proteome%3AUP000006548.fasta 
 
-/scratch/ncbi-blast-2.5.0+/bin/blastp 
+nice -19 /scratch/ncbi-blast-2.5.0+/bin/blastp \
 -query ./fasta/unannotated/20160904_NCBI_Cajanus_Cajan_48522_IDs.fasta \
 -db fasta/uniprot/uniprot-proteome%3AUP000006548.fasta \
 -outfmt 13 \
@@ -29,7 +29,7 @@ makeblastdb -dbtype prot -in fasta/uniprot/uniprot-proteome%3AUP000006548.fasta
 -max_target_seqs 2
 
 
-/scratch/ncbi-blast-2.5.0+/bin/blastp 
+nice -19 /scratch/ncbi-blast-2.5.0+/bin/blastp \
 -query ./fasta/unannotated/20160904_NCBI_Cajanus_Cajan_48522_IDs.fasta \
 -db fasta/uniprot/uniprot-proteome%3AUP000059680.fasta \
 -outfmt 13 \
