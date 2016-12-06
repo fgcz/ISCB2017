@@ -46,12 +46,13 @@ package.install(jsonlite)
 
 ```{r}
 library(jsonlite)
-S <- fromJSON("/scratch/ISCB2017/data/59680.json")   
+library(parallel)
+DIR<-dir()
+FILES <- DIR[((grep("06548_.*json", DIR)))]     
 
-
-res <- lapply(FILES[idx], function(x){
+res <- mclapply(FILES, function(x){
   S <- fromJSON(x); 
-  title <-NULL
+  title <-NA
   
   if(length(S$BlastOutput2$report$results$search$hits)>0){
      title <- S$BlastOutput2$report$results$search$hits$description[[1]]$title
@@ -60,14 +61,15 @@ res <- lapply(FILES[idx], function(x){
   cbind(file=x,
     expect=S$BlastOutput2$report$params$expect, 
     query_title=S$BlastOutput2$report$results$search$query_title,
-    title=S$BlastOutput2$report$results$search$hits$description[[1]]$title)  
+    title=title)  
     
    })                 
 
 
 res <- do.call('rbind', res)
-S$BlastOutput2$report$results$bl2seq$hits[[1]]$description
-S$BlastOutput2$report$results$bl2seq$hits[[1]]$description[[1]]$title        
+res<-as.data.frame(res)
+sum(is.na(res$title))
+
 
 ```
 
