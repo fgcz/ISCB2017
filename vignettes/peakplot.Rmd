@@ -1,3 +1,55 @@
+---
+title: "20161216_CHE434 live demo"
+author: "Christian Panse"
+date: "12/12/2016"
+
+output: slidy_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+random_swap <- function(x){
+   a <- sample(length(x),2)
+   tmp <- x[a[1]]
+   x[a[1]] <- x[a[2]]
+   x[a[2]] <- tmp
+  
+   return(x)
+   }
+```
+
+# FASTA - get current SwissProt
+
+```bash
+curl ftp://ftp.uniprot.org/pub/databases/uniprot/\
+current_release/knowledgebase/complete/uniprot_sprot.fasta.gz \
+| gunzip -c \
+> swissprot
+```
+
+# Top ten organisms having the largest number of entries in swissprot
+```base
+grep "^>" < swissprot \
+| awk '$1~/_/{print $1}' \
+| awk -F"_" '{h[$NF]++}END{for (i in h){print i" "h[i]}}' \
+| sort -k2 -g -r -S128M \
+| head -n 10
+```
+
+# MS detectable peptides
+
+tryptic digest rule: cut after R or K if the C-term. residue is not P.
+```bash
+grep "^>sp|P21781|FGF7_HUMAN" -A 5 < swissprot \
+| fcat \
+| digest \
+| pim  \
+| awk -F";" '600<$2 && $2<6000{print }'
+```
+
+
+
 # CRAN package protViz
 
 * install R
