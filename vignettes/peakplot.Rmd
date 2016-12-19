@@ -1,0 +1,36 @@
+# CRAN package protViz
+
+* install R
+http://stat.ethz.ch/CRAN/
+
+* install protViz
+https://CRAN.R-project.org/package=protViz
+
+```{R}
+library(protViz)
+```
+
+# Compute fragmention table of 'EGVNDNEEGFFSAR'
+
+```{R}
+fragmentIon('EGVNDNEEGFFSAR')
+```
+
+
+# Plot tandem MS
+
+```{R}
+#source('F161375_query160.R')
+load("F161375.RData")
+plot(F161375[[160]]$mZ, F161375[[160]]$intensity, type='h')
+```
+
+# Label tandem MS
+
+```{r fig.retina=3}
+peakplot(peptide=F161375[[160]]$peptideSequence, 
+         spec=F161375[[160]],
+         FUN=function(b,y){
+           return (list(y=y))
+         })
+```
