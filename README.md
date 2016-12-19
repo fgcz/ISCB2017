@@ -18,7 +18,7 @@ Mass spectrometry (and protein analytics) | browse around for milestones in MS, 
 Getting ready for hands-on sessions | Install MQ, do git co, commits, get R packages | 2 h | CP | to-be-prepared (show 4)
 PSM identification with protViz | get fasta, R (seqinR), R (digest), theoretical considerations about search space, different DBs, uniqueness of peptides.  | 2h | CP | workshop to be prepared (cp) (show 5)
 Protein identification with search engines / include [FDR](vignettes/fdr.Rmd) | tbd  | 2h | WEW | workshop to be prepared (cp) (show 5)
-MS and different activiation techniques | protViz & mgfs & labelling of spectra | 1h | CP?? | (show 6)
+[MS and different activiation techniques](vignettes/peakplot.Rmd) | protViz & mgfs & labelling of spectra | 1h | CP?? | (show 6)
 PTMs | restricted and unrestricted search, spectral library search (wew) | 1h | WEW?? | Theo part (ETH lecture) , workshop! (show 7)
 Experimental design in proteomcis experiments | Annotation of samples in Bfabric | 1h | jg | to-be-prepared (show 8)
 Conclusion of day 1 | Q & A | 1h | xxx | to-be-prepared (show 9)
