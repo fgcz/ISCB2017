@@ -11,7 +11,8 @@ output: slidy_presentation
 
 ```{r fig.retina=3}
 # get data
-load("http://fgcz-s-021.uzh.ch/~cpanse/CHE_434/F205306.RData")
+load(url('http://fgcz-s-021.uzh.ch/~cpanse/CHE_434/F205306.RData'))
+
 
 score <- sapply(F205306, function(x){x$mascotScore})
 protein <- sapply(F205306, function(x){x$proteinInformation})
