@@ -1,5 +1,10 @@
 # Label Free Quantification (LFQ)
 
+
+## 	consideration
+
+
+## Two Group
 ```{r}
 S <- read.table("p1946_prx.tsv", sep='\t', header=TRUE)
 gg <- c(rep('G', 6), rep('GE', 6))
