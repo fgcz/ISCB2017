@@ -6,7 +6,7 @@ Version: 0.0.1
 Author: Christian Panse <cp@fgcz.ethz.ch>, Jonas Grossmann <jg@fgcz.ethz.ch>, Witold E. Wolski <wew.ethz.ch>
 Maintainer: Jonas Grossmann <jg@fgcz.ethz.ch>
 Depends: R (>= 3.3), methods, bibliospec
-Imports: protViz
+Imports: specL, lattice
 Suggests: lattice, RUnit, xtable, pathview
 Description: This R package helps 
 License: GPL-3

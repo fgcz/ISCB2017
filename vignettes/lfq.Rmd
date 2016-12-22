@@ -1,12 +1,47 @@
-# Label Free Quantification (LFQ)
+---
+title: "Label Free Quantification (LFQ)"
+author: "Christian Panse"
+date: "12/12/2016"
 
+output: slidy_presentation
+---
 
-## 	consideration
-
-
-## Two Group
 ```{r}
-S <- read.table("p1946_prx.tsv", sep='\t', header=TRUE)
+library(specL)
+library(lattice)
+```
+
+
+# consideration
+
+```{r}
+P <- read.table("../data/proteotypic_peptides.txt", col.names=c('protein','peptide','pim'))
+load("data/F244088f.RData")
+```
+
+# plot filtered LCMS map
+```{r}
+plot.psmSet(F244088f)
+```
+
+```{r fig.retina=3}
+# xyplot(pim ~ ssrc | protein, group=protein, data=P)
+```
+
+## xic
+
+```{r}
+load("data/xic.RData")
+XIC.max <- aggregate(count ~ protein + peptide + charge, data=XIC, FUN=max)
+XIC.max <- merge(XIC, XIC.max, by.x=names(XIC.max), by.y = names(XIC.max))
+```
+
+## RT normalization
+
+
+# Two Group
+```{r}
+S <- read.table("../data/p1946_prx.tsv", sep='\t', header=TRUE)
 gg <- c(rep('G', 6), rep('GE', 6))
 dim(S)
 table(gg)
@@ -82,6 +117,16 @@ plot_volcano(S.t.test)
 ```
 
 # What happen if you mess up your annotation?
+```{r}
+random_swap <- function(x){
+   a <- sample(length(x),2)
+   tmp <- x[a[1]]
+   x[a[1]] <- x[a[2]]
+   x[a[2]] <- tmp
+  
+   return(x)
+   }
+```
 
 ```{r fig.retina=5}
 op<-par(mfrow=c(2,2))
