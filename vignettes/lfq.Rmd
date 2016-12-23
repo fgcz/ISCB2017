@@ -6,21 +6,60 @@ date: "12/12/2016"
 output: slidy_presentation
 ---
 
+
+```{r echo=FALSE}
+plot.psmSet <- function (x, iRTpeptides = specL::iRTpeptides, ...) 
+{
+    rt <- unlist(lapply(x, function(x) {
+        x$rt
+    }))
+    pepmass <- unlist(lapply(x, function(xx) {
+        xx$pepmass
+    }))
+    peptide <- unlist(lapply(x, function(xx) {
+        xx$peptideSequence
+    }))
+    idx.iRT <- which(peptide %in% iRTpeptides$peptide)
+    charge <- unlist(lapply(x, function(xx) {
+        xx$charge
+    }))
+    filename <- as.numeric(as.factor(unlist(lapply(x, function(xx) {
+        xx$fileName
+    }))))
+    plot(pepmass ~ rt, pch = filename, col = charge, main = "LCMS map", 
+        xlab = "retention time", ylab = "peptide mass", ...)
+    cc <- sort(unique(charge))
+    legend("topleft", "iRT peptides", pch = 22)
+    legend("left", paste(cc, "+", sep = ""), col = cc, pch = 22, 
+        title = "charge")
+    text(rt, pepmass, 1:length(rt), pos = 3, col = charge, cex = 0.5)
+    fn <- unique(unlist(lapply(x, function(xx) {
+        xx$fileName
+    })))
+    n <- nchar(fn)
+    #legend("bottomright", substr(fn, n - 25, n), pch = unique(filename), 
+    #    cex = 1, title = "input file names")
+    points(rt[idx.iRT], pepmass[idx.iRT], pch = 22, cex = 2)
+}
+```
+
 ```{r}
 library(specL)
-library(lattice)
+library(ISCB2017)
 ```
 
 
 # consideration
 
 ```{r}
-P <- read.table("../data/proteotypic_peptides.txt", col.names=c('protein','peptide','pim'))
-load("data/F244088f.RData")
+P <- read.table("data/proteotypic_peptides.txt", col.names=c('protein','peptide','pim'))
+#load("data/F244088f.RData")
 ```
 
 # plot filtered LCMS map
 ```{r}
+data(F244088f)
+
 plot.psmSet(F244088f)
 ```
 
@@ -30,9 +69,25 @@ plot.psmSet(F244088f)
 
 ## xic
 
+get RT
 ```{r}
-load("data/xic.RData")
-XIC.max <- aggregate(count ~ protein + peptide + charge, data=XIC, FUN=max)
+X <- do.call('rbind', 
+             lapply(F244088f,
+                    function(x){data.frame(peptide=x$peptideSequence,
+                                           rtms2=x$rtinseconds/60)}))
+XIC <- merge(XIC, X, by='peptide')
+
+eps <- 0.5
+
+XIC.f <- XIC[XIC$rtms2 - eps < XIC$rt & XIC$rt < XIC$rtms2 + eps,] 
+library(lattice())
+
+xyplot(log(count,2) ~ rt|protein ,group=charge, data=XIC.f[grepl("20161115_12_GE1_b.raw", XIC.f$filename),], type='h')
+```
+
+```{r}
+#load("data/xic.RData")
+XIC.max <- aggregate(count ~ protein + peptide + charge + filename, data=XIC.f, FUN=max)
 XIC.max <- merge(XIC, XIC.max, by.x=names(XIC.max), by.y = names(XIC.max))
 ```
 
@@ -41,28 +96,28 @@ XIC.max <- merge(XIC, XIC.max, by.x=names(XIC.max), by.y = names(XIC.max))
 
 # Two Group
 ```{r}
-S <- read.table("../data/p1946_prx.tsv", sep='\t', header=TRUE)
+#S <- read.table("data/p1946_prx.tsv", sep='\t', header=TRUE)
 gg <- c(rep('G', 6), rep('GE', 6))
-dim(S)
+dim(prxmq)
 table(gg)
 
 op <- par(mfrow=c(1,3))
 # example 0
 idx <- 2
-x <- log(unlist(S[idx,2:13]),2)
-boxplot(x ~ gg, main=S[idx,1])
+x <- log(unlist(prxmq[idx, ]),2)
+boxplot(x ~ gg, main=row.names(prxmq)[idx])
 t.test(x ~ gg,  alternative = "two.sided")
 
 # example 1
-idx <- which(S$protein == "sp|P00331|ADH2_YEAST")
-x <- log(unlist(S[idx,2:13]),2)
-boxplot(x ~ gg, main=S[idx,1])
+idx <- which(row.names(prxmq) == "sp|P00331|ADH2_YEAST")
+x <- log(unlist(prxmq[idx, ]),2)
+boxplot(x ~ gg, main=row.names(prxmq)[idx])
 t.test(x ~ gg,  alternative = "two.sided")
 
 #example 2
-idx <- which(S$protein == "sp|P33302|PDR5_YEAST")
-x <- log(unlist(S[idx,2:13]),2)
-boxplot(x ~ gg, main=S[idx,1])
+idx <- which(row.names(prxmq) == "sp|P33302|PDR5_YEAST")
+x <- log(unlist(prxmq[idx, ]),2)
+boxplot(x ~ gg, main=row.names(prxmq)[idx])
 t.test(x ~ gg,  alternative = "two.sided")
 ```
 
@@ -70,22 +125,23 @@ t.test(x ~ gg,  alternative = "two.sided")
 ```{r}
 expression_analysis <- function(S, groups){
   S.t.test <- lapply(1:nrow(S), function(idx){
-    x <- unlist(S[idx, 2:ncol(S)])
+    x <- unlist(S[idx, ])
     x[x==0] <- NA
-    if (min(aggregate(x, by=list(groups), function(x){sum(!is.na(x))})$x)>5){
+    if (min(aggregate(x, by=list(groups), function(x){sum(!is.na(x))})$x) > 5){
       t <- t.test(log(x, 2) ~ groups, alternative = "two.sided")
-      cbind(FC = diff(t$estimate), p.value = t$p.value, proteinID=idx)
+      r <- cbind(FC = diff(t$estimate), p.value = t$p.value, idx=idx)
+      row.names(r) <- row.names(S)[idx]
+      r
     }else{NULL}
   })
   
-  S.t.test <- as.data.frame(do.call('rbind',S.t.test))
-  rownames(S.t.test) <- substr(S[S.t.test$proteinID,1], 1, 20)
-    #paste(1:nrow(S.t.test), substr(S[S.t.test$proteinID,1], 1, 9), sep="_")
+  S.t.test <- as.data.frame(do.call('rbind', S.t.test))
+ 
   S.t.test
 }
 
 
-S.t.test <- expression_analysis(S, gg)
+S.t.test <- expression_analysis(prxmq, gg)
 head(S.t.test)
 ```
 
@@ -131,9 +187,9 @@ random_swap <- function(x){
 ```{r fig.retina=5}
 op<-par(mfrow=c(2,2))
 plot_volcano(S.t.test)
-(gg <- random_swap(gg)); S.t.test <- expression_analysis(S, gg); plot_volcano(S.t.test)
-(gg <- random_swap(gg)); S.t.test <- expression_analysis(S, gg); plot_volcano(S.t.test)
-(gg <- random_swap(gg)); S.t.test <- expression_analysis(S, gg); plot_volcano(S.t.test)
+(gg <- random_swap(gg)); S.t.test <- expression_analysis(prxmq, gg); plot_volcano(S.t.test)
+(gg <- random_swap(gg)); S.t.test <- expression_analysis(prxmq, gg); plot_volcano(S.t.test)
+(gg <- random_swap(gg)); S.t.test <- expression_analysis(prxmq, gg); plot_volcano(S.t.test)
 ```
 
 * a viewpoint on volcano plot:
