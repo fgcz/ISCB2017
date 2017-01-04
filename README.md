@@ -19,7 +19,7 @@ Keep | Getting ready for hands-on sessions | Install MQ, do git co, commits, get
 Keep | [PSM identification with protViz](vignettes/peakplot.Rmd) | get fasta, R (seqinR), R (digest), theoretical considerations about search space, different DBs, uniqueness of peptides.  | 2h | CP | workshop to be prepared (cp) (show 5)
 Keep | Protein identification with search engines / include [FDR](vignettes/fdr.Rmd) | tbd  | 2h | WEW | workshop to be prepared (cp) (show 5)
 Keep | [MS and different activiation techniques](vignettes/peakplot.Rmd) | protViz & mgfs & labelling of spectra | 1h | CP?? | (show 6)
-~~Skip | PTMs | restricted and unrestricted search, spectral library search (wew) | 1h | WEW?? | Theo part (ETH lecture) , workshop! (show 7) ~~
+~~Skip~~ | ~~PTMs~~ | ~~restricted and unrestricted search, spectral library search (wew)~~ | 1h | WEW?? | Theo part (ETH lecture) , workshop! (show 7)
 Keep | Experimental design in proteomcis experiments | Annotation of samples in Bfabric | 1h | jg | to-be-prepared (show 8)
 Keep | Conclusion of day 1 | Q & A | 1h | xxx | to-be-prepared (show 9)
 
