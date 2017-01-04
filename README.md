@@ -19,7 +19,7 @@ Keep | Getting ready for hands-on sessions | Install MQ, do git co, commits, get
 Keep | [PSM identification with protViz](vignettes/peakplot.Rmd) | get fasta, R (seqinR), R (digest), theoretical considerations about search space, different DBs, uniqueness of peptides.  | 2h | CP | workshop to be prepared (cp) (show 5)
 Keep | Protein identification with search engines / include [FDR](vignettes/fdr.Rmd) | tbd  | 2h | WEW | workshop to be prepared (cp) (show 5)
 Keep | [MS and different activiation techniques](vignettes/peakplot.Rmd) | protViz & mgfs & labelling of spectra | 1h | CP?? | (show 6)
-~~Skip~~ | ~~PTMs~~ | ~~restricted and unrestricted search, spectral library search (wew)~~ | 1h | WEW?? | Theo part (ETH lecture) , workshop! (show 7)
+~~Skip~~ | ~~PTMs~~ | ~~restricted and unrestricted search, spectral library search (wew)~~ | ~~1h~~ | ~~WEW??~~ | ~~Theo part (ETH lecture) , workshop! (show 7)~~
 Keep | Experimental design in proteomcis experiments | Annotation of samples in Bfabric | 1h | jg | to-be-prepared (show 8)
 Keep | Conclusion of day 1 | Q & A | 1h | xxx | to-be-prepared (show 9)
 
@@ -42,10 +42,10 @@ Keep | Conclusion of day 2 | Q & A | 1h | jg | to-be-prepared (show 16)
 ### Day 3
 KeepOrSkip |Theory Module | Hands-on Module | Duration | Responsible person | Action needed
 ------------ |------------ | ------------- | ------------- | ------------- | -------------  
-~~Skip | Repetition and wrap up of Day 2| Q & A | 0.5 h | cp | to-be-prepared (show 17)~~
-~~Skip | Model organisms vs custom databases / blast | Pigeon pea DB? status? / blast| 1h | jg/cp | to-be-prepared (show 18)~~
+~~Skip~~ | ~~Repetition and wrap up of Day 2~~| ~~Q & A ~~| ~~0.5 h~~ | ~~cp~~ | ~~to-be-prepared (show 17)~~
+~~Skip~~ | ~~Model organisms vs custom databases / blast ~~| ~~Pigeon pea DB? status? / blast~~| ~~1h~~ | ~~jg/cp~~ | ~~to-be-prepared (show 18)~~
 PrepareButSkip | Other programmatic tools for downstream analysis (BiomaRt, StringDB, Setrank) | Biomart, String, Setrank | 1h | cpNwew | to-be-prepared (show 21)
-~~Skip | RNAseq vs LFQ, What is to expect | Number game, log2Correlation | 1h | jg | Combo-course day5 (show 22)~~
+~~Skip~~ | ~~RNAseq vs LFQ, What is to expect~~ | ~~Number game, log2Correlation~~ | ~~1h~~ | ~~jg~~ | ~~Combo-course day5 (show 22)~~
 
 ### Day 4 -> moved to Day ZERO
 
