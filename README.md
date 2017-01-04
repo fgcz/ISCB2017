@@ -14,7 +14,7 @@ Theory Module | Hands-on Module | Duration | Responsible person | Action needed
 ------------ | ------------- | ------------- | ------------- | ------------- 
 Outline for this week | break | 0.5 h | jg | tbd at the very end (show 1)
 The FGCZ in Zurich | browse FGCZ page | 0.5 h | jg | Jonas (show 2) -> DONE
-Mass spectrometry (and protein analytics) | browse around for milestones in MS, form groups, introduce yourself | 1 h | jg | Combo course day2 first slides (show 3)
+Mass spectrometry (and protein analytics) | browse around for milestones in MS, form groups, introduce yourself | 1 h | jg | Combo course day2 first slides (show 3)  -> DONE
 Getting ready for hands-on sessions | Install MQ, do git co, commits, get R packages | 2 h | CP | to-be-prepared (show 4)
 [PSM identification with protViz](vignettes/peakplot.Rmd) | get fasta, R (seqinR), R (digest), theoretical considerations about search space, different DBs, uniqueness of peptides.  | 2h | CP | workshop to be prepared (cp) (show 5)
 Protein identification with search engines / include [FDR](vignettes/fdr.Rmd) | tbd  | 2h | WEW | workshop to be prepared (cp) (show 5)
