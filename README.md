@@ -10,49 +10,48 @@
 
 ### Day 1
 
-Theory Module | Hands-on Module | Duration | Responsible person | Action needed
------------- | ------------- | ------------- | ------------- | ------------- 
-Outline for this week | break | 0.5 h | jg | tbd at the very end (show 1)
-The FGCZ in Zurich | browse FGCZ page | 0.5 h | jg | Jonas (show 2) -> DONE
-Mass spectrometry (and protein analytics) | browse around for milestones in MS, form groups, introduce yourself | 1 h | jg | Combo course day2 first slides (show 3)  -> DONE
-Getting ready for hands-on sessions | Install MQ, do git co, commits, get R packages | 2 h | CP | to-be-prepared (show 4)
-[PSM identification with protViz](vignettes/peakplot.Rmd) | get fasta, R (seqinR), R (digest), theoretical considerations about search space, different DBs, uniqueness of peptides.  | 2h | CP | workshop to be prepared (cp) (show 5)
-Protein identification with search engines / include [FDR](vignettes/fdr.Rmd) | tbd  | 2h | WEW | workshop to be prepared (cp) (show 5)
+KeepOrSkip | Theory Module | Hands-on Module | Duration | Responsible person | Action needed
+------------ |------------ | ------------- | ------------- | ------------- | ------------- 
+Keep | Outline for this week | break | 0.5 h | jg | tbd at the very end (show 1)
+Keep | The FGCZ in Zurich | browse FGCZ page | 0.5 h | jg | Jonas (show 2) -> DONE
+Keep | Mass spectrometry (and protein analytics) | browse around for milestones in MS, form groups, introduce yourself | 1 h | jg | Combo course day2 first slides (show 3)  -> DONE
+Keep | Getting ready for hands-on sessions | Install MQ, do git co, commits, get R packages | 2 h | CP | to-be-prepared (show 4)
+Keep | [PSM identification with protViz](vignettes/peakplot.Rmd) | get fasta, R (seqinR), R (digest), theoretical considerations about search space, different DBs, uniqueness of peptides.  | 2h | CP | workshop to be prepared (cp) (show 5)
+Keep | Protein identification with search engines / include [FDR](vignettes/fdr.Rmd) | tbd  | 2h | WEW | workshop to be prepared (cp) (show 5)
 [MS and different activiation techniques](vignettes/peakplot.Rmd) | protViz & mgfs & labelling of spectra | 1h | CP?? | (show 6)
-PTMs | restricted and unrestricted search, spectral library search (wew) | 1h | WEW?? | Theo part (ETH lecture) , workshop! (show 7)
-Experimental design in proteomcis experiments | Annotation of samples in Bfabric | 1h | jg | to-be-prepared (show 8)
-Conclusion of day 1 | Q & A | 1h | xxx | to-be-prepared (show 9)
+Skip | PTMs | restricted and unrestricted search, spectral library search (wew) | 1h | WEW?? | Theo part (ETH lecture) , workshop! (show 7)
+Keep | Experimental design in proteomcis experiments | Annotation of samples in Bfabric | 1h | jg | to-be-prepared (show 8)
+Keep | Conclusion of day 1 | Q & A | 1h | xxx | to-be-prepared (show 9)
 
 
 
 ### Day 2
 
-Theory Module | Hands-on Module | Duration | Responsible person | Action needed
------------- | ------------- | ------------- | ------------- | -------------  
-Repetition and wrap up of Day 1 | Q & A | 0.5 h | jg | to-be-prepared (conclusion day1) (show 10)
-Tools for protein identification | Look at MQ and start a search | 1h | jg | to-be-prepared (show 11)
-Quantitative proteomics strategies (an overview) | break | 1h | jg | Combo-course day4 (NSK) (show 12)
-Label-free quantification | MQ: txt-tables | 1h | jg | Combo-course day4 (partI) (show 13) 
-Quantitative protein matrices | Visualizing QMs in R. R-quantable  | 1h | (wew?) | Combo-course day4 (partII) (show 14)
-Two group analysis for Yeast, grown on different nutrient sources | Analysing 2 groups in R-quantable | 2h | (wew?) | to-be-prepared (show 15)
-Conclusion of day 2 | Q & A | 1h | jg | to-be-prepared (show 16)
+KeepOrSkip | Theory Module | Hands-on Module | Duration | Responsible person | Action needed
+------------ |------------ | ------------- | ------------- | ------------- | -------------  
+Keep | Repetition and wrap up of Day 1 | Q & A | 0.5 h | jg | to-be-prepared (conclusion day1) (show 10)
+Keep | Tools for protein identification | Look at MQ and start a search | 1h | jg | to-be-prepared (show 11)
+PrepareButSkip | Quantitative proteomics strategies (an overview) | break | 1h | jg | Combo-course day4 (NSK) (show 12)
+Keep | Label-free quantification | MQ: txt-tables | 1h | jg | Combo-course day4 (partI) (show 13) 
+Keep | Quantitative protein matrices | Visualizing QMs in R. R-quantable  | 1h | (wew?) | Combo-course day4 (partII) (show 14)
+Keep | Two group analysis for Yeast, grown on different nutrient sources | Analysing 2 groups in R-quantable | 2h | (wew?) | to-be-prepared (show 15)
+Keep | Principle of ORAs |  Webgestalt w YEAST results | 1h | jg | Combo-course day4 (partI) (show 20)
+Keep | Webtools for model organisms | Visualizing results on a cellular overview map (YeastCyc) | 1h | cpNjg | to-be-prepared (show 19)
+Keep | Conclusion of day 2 | Q & A | 1h | jg | to-be-prepared (show 16)
 
 
 
 ### Day 3
-Theory Module | Hands-on Module | Duration | Responsible person | Action needed
------------- | ------------- | ------------- | ------------- | -------------  
+KeepOrSkip |Theory Module | Hands-on Module | Duration | Responsible person | Action needed
+------------ |------------ | ------------- | ------------- | ------------- | -------------  
 Repetition and wrap up of Day 2| Q & A | 0.5 h | cp | to-be-prepared (show 17)
 Model organisms vs custom databases / blast | Pigeon pea DB? status? / blast| 1h | jg/cp | to-be-prepared (show 18)
-Webtools for model organisms | Visualizing results on a cellular overview map (YeastCyc) | 1h | cpNjg | to-be-prepared (show 19)
-Principle of ORAs |  Webgestalt w YEAST results | 1h | jg | Combo-course day4 (partI) (show 20)
-Other programmatic tools for downstream analysis (BiomaRt, StringDB, Setrank) | Biomart, String, Setrank | 1h | cpNwew | to-be-prepared (show 21)
-RNAseq vs LFQ, What is to expect | Number game, log2Correlation | 1h | jg | Combo-course day5 (show 22)
-Conclusion of day 3 | Q & A | 1h | jg | to-be-prepared (show 23)
+PrepareButSkip | Other programmatic tools for downstream analysis (BiomaRt, StringDB, Setrank) | Biomart, String, Setrank | 1h | cpNwew | to-be-prepared (show 21)
+Skip | RNAseq vs LFQ, What is to expect | Number game, log2Correlation | 1h | jg | Combo-course day5 (show 22)
 
 
 
-### Day 4
+### Day 4 -> moved to Day ZERO
 
 - Socio Economics
 -> Phone Call scheduled Thursday, 27th of Oct.
