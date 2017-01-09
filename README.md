@@ -38,10 +38,21 @@ Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible
 1 | Repetition of Day 1 | Q & A | 0.5 h | all
 2 | About Plots | coffee break | 0.5 h | WEW
 3 | Protein, Peptide, Mass-spec view and LFQ | Manual LFQ n testing w cp | jg & cp
-4 | 
+4 | Experimental design in quant experiments | Looking at annotation of samples in Bfabric | 1h | jg
+5 | Two group analysis for Yeast, grown on different nutrient sources | Analysing 2 groups in R-quantable | 2h | WEW
+6 | Principle of ORAs |  Webgestalt w YEAST results | 1h | jg 
+7 | Webtools for model organisms | Visualizing results on a cellular overview map (YeastCyc) | 1h | cpNjg
+8 | Conclusion of day 2 | Q & A | 1h | jg 
+
+## Day 4 -> Republican Day
+
+## Day 5 -> Wrap up of the whole course -> identify room for improvements ;)
+ 
 
 
-
+additionally if we have too much time ;)
+- Quantitative proteomics strategies (an overview) | break | 1h | jg | Combo-course day4 (NSK) (show 12)
+- Label-free quantification | MQ: txt-tables | 1h | jg | Combo-course day4 (partI) (show 13) 
 
 
 
