@@ -37,7 +37,7 @@ Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible
 ------------ |------------ | ------------- | ------------- | ------------- 
 1 | Repetition of Day 1 | Q & A | 0.5 h | all
 2 | About Plots | coffee break | 0.5 h | WEW
-3 | Protein, Peptide, Mass-spec view and LFQ | Manual LFQ n testing w cp | jg & cp
+3 | Protein, Peptide, Mass-spec view and LFQ | Manual LFQ n testing w cp | 2h | jg & cp
 4 | Experimental design in quant experiments | Looking at annotation of samples in Bfabric | 1h | jg
 5 | Two group analysis for Yeast, grown on different nutrient sources | Analysing 2 groups in R-quantable | 2h | WEW
 6 | Principle of ORAs |  Webgestalt w YEAST results | 1h | jg 
@@ -47,6 +47,10 @@ Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible
 ## Day 4 -> Republican Day
 
 ## Day 5 -> Wrap up of the whole course -> identify room for improvements ;)
+
+Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible Person
+------------ |------------ | ------------- | ------------- | ------------- 
+9 | Wrap up of the course | Course Evaluation | 1h | all
  
 
 
