@@ -35,8 +35,10 @@ Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible
 
 Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible Person
 ------------ |------------ | ------------- | ------------- | ------------- 
-1 | Outline for this week | break | 0.5 h | jg 
-
+1 | Repetition of Day 1 | Q & A | 0.5 h | all
+2 | About Plots | coffee break | 0.5 h | WEW
+3 | Protein, Peptide, Mass-spec view and LFQ | Manual LFQ n testing w cp | jg & cp
+4 | 
 
 
 
