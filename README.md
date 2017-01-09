@@ -8,6 +8,48 @@
 
 
 
+## Day 1 (Common Day)
+
+- Morning Session: Responsible SE -> Ingrid & Urs
+- Afternoon Session: Responsible PrXIT -> Jonas
+
+
+
+
+## Day 2 (Protein Identifications)
+
+Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible Person
+------------ |------------ | ------------- | ------------- 
+1 | Outline for this week | break | 0.5 h | jg 
+
+
+
+
+
+## Day 3 (Protein Quantification)
+
+Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible Person
+------------ |------------ | ------------- | ------------- 
+1 | Outline for this week | break | 0.5 h | jg 
+
+
+
+
+
+
+
+
+
+
+
+
+————————————————————
+Preparations
+————————————————————
+
+
+
+
 ### Day 1
 
 KeepOrSkip | Theory Module | Hands-on Module | Duration | Responsible person | Action needed
@@ -101,7 +143,7 @@ Presentation content (I. Fromm):
 - MQ -> https://www.ncbi.nlm.nih.gov/pubmed/24942700
 - LFQ -> https://www.ncbi.nlm.nih.gov/pubmed/23391308
 - MSQC1 -> https://www.ncbi.nlm.nih.gov/pubmed/27130639
-- Volcano Plot -> https://www.ncbi.nlm.nih.gov/pubmed/27272648
+- Top3 Protein quantification -> https://www.ncbi.nlm.nih.gov/pubmed/20576481
 
 
 ## Notes by CP
@@ -112,3 +154,6 @@ Presentation content (I. Fromm):
 ### References
 - Visualizing data, William S. Cleveland, Murray Hill, New Jersey : AT&T Bell Laboratories 1993
 - Lattice, Multivariate Data Visualization with R, Deepayan Sarkar , 2008
+- Volcano Plot -> https://www.ncbi.nlm.nih.gov/pubmed/27272648
+
+
