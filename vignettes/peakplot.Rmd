@@ -110,12 +110,25 @@ rv <- peakplot("TAFDEAIAELDTLSEESYK", msms[[2]])
 
 ```{r}
 
-peptide_search <- function(x){
-  print(x)
+peptide_search <- function(x, peptides, pimIdx=parentIonMass(peptides), peptideMassTolerancePPM=5){
+  query.mass <- ((x$pepmass  * x$charge))  - (1.0027 * (x$charge-1))
+  eps <- query.mass * massTolPPM * 1E-6
+  
+  lower <- findNN(query.mass - eps, pimIdx)
+  upper <- findNN(query.mass + eps, pimIdx)
+  
+  data.frame(mass_error=eps, 
+             idxDiff = upper - lower, 
+             charge=x$charge, 
+             m=query.mass,
+             lower=lower,
+             upper=upper,
+             hit=(x$peptideSequence %in% peptides[lower:upper]))
 }
 
 idx <- which(sapply(F244088f, function(x){length(x$mZ)>0}))
+S<-do.call('rbind', lapply(F244088f[idx], function(x){peptide_search(x, swissprot_tryptic_peptides10K, pim )}))
 
-peptide_search(F244088f[[idx[1]]])
+#peptide_search(F244088f[[idx[1]]])
 
 ```
