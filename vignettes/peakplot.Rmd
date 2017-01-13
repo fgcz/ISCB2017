@@ -110,25 +110,51 @@ rv <- peakplot("TAFDEAIAELDTLSEESYK", msms[[2]])
 
 ```{r}
 
-peptide_search <- function(x, peptides, pimIdx=parentIonMass(peptides), peptideMassTolerancePPM=5){
-  query.mass <- ((x$pepmass  * x$charge))  - (1.0027 * (x$charge-1))
-  eps <- query.mass * massTolPPM * 1E-6
+byIon <- function(b, y){
+    Hydrogen <- 1.007825
+    Oxygen <- 15.994915
+    Nitrogen <- 14.003074
+
+    #yo <- fi$y - Oxygen - Hydrogen - Hydrogen
+    #c<- b + (Nitrogen + (3 * Hydrogen))
+    #z<- y - (Nitrogen + (3 * Hydrogen))
+  
+    b2_ <- (b + Hydrogen) * 0.5
+    y2_ <- (y + Hydrogen) * 0.5
+
+    return(cbind(b, y, b2_, y2_))
+}
+
+peptide_search <- function(x, peptides, 
+                           pimIdx=parentIonMass(peptides), 
+                           peptideMassTolerancePPM=5,
+                           framentIonMassToleranceDa=0.01){
+  
+  query.mass <- ((x$pepmass  * x$charge))  - (1.007825 * (x$charge-1))
+  eps <- query.mass * peptideMassTolerancePPM * 1E-6
   
   lower <- findNN(query.mass - eps, pimIdx)
   upper <- findNN(query.mass + eps, pimIdx)
   
+  rv <- mclapply(peptides[lower:upper], function(p){
+      psm(p, x, plot=FALSE, FUN=byIon)},mc.cores =4)
+  
+  rv.error <- sapply(rv, function(p){sum(abs(p$mZ.Da.error) < framentIonMassToleranceDa)})
+  
+  idx.tophit <- which(rv.error==max(rv.error))[1]
+  
   data.frame(mass_error=eps, 
              idxDiff = upper - lower, 
-             charge=x$charge, 
-             m=query.mass,
-             lower=lower,
-             upper=upper,
-             hit=(x$peptideSequence %in% peptides[lower:upper]))
+             charge = x$charge, 
+             pepmass = query.mass,
+             peptideSequence = rv[[idx.tophit]]$sequence,
+             ms2hit = (rv[[idx.tophit]]$sequence == x$peptideSequence),
+             hit = (x$peptideSequence %in% peptides[lower:upper]))
 }
 
 idx <- which(sapply(F244088f, function(x){length(x$mZ)>0}))
-S<-do.call('rbind', lapply(F244088f[idx], function(x){peptide_search(x, swissprot_tryptic_peptides10K, pim )}))
 
-#peptide_search(F244088f[[idx[1]]])
+S <- do.call('rbind', lapply(F244088f[idx], function(x){peptide_search(x, swissprot_tryptic_peptides10K, pim )}))
+
 
 ```
