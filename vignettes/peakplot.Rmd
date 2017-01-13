@@ -115,14 +115,18 @@ byIon <- function(b, y){
     Oxygen <- 15.994915
     Nitrogen <- 14.003074
 
-    #yo <- fi$y - Oxygen - Hydrogen - Hydrogen
-    #c<- b + (Nitrogen + (3 * Hydrogen))
-    #z<- y - (Nitrogen + (3 * Hydrogen))
+    yo <- y - Oxygen - Hydrogen - Hydrogen
+    
+    c <- b + (Nitrogen + (3 * Hydrogen))
+    z <- y - (Nitrogen + (3 * Hydrogen))
+  
+    c2_ <- (c + Hydrogen) * 0.5
+    z2_ <- (z + Hydrogen) * 0.5
   
     b2_ <- (b + Hydrogen) * 0.5
     y2_ <- (y + Hydrogen) * 0.5
 
-    return(cbind(b, y, b2_, y2_))
+    return(cbind(b, y, b2_, y2_))#, c, z, c2_, z2_, yo))
 }
 
 peptide_search <- function(x, peptides, 
@@ -136,8 +140,8 @@ peptide_search <- function(x, peptides,
   lower <- findNN(query.mass - eps, pimIdx)
   upper <- findNN(query.mass + eps, pimIdx)
   
-  rv <- mclapply(peptides[lower:upper], function(p){
-      psm(p, x, plot=FALSE, FUN=byIon)},mc.cores =4)
+  rv <- lapply(peptides[lower:upper], function(p){
+      psm(p, x, plot=FALSE, FUN=byIon)})
   
   rv.error <- sapply(rv, function(p){sum(abs(p$mZ.Da.error) < framentIonMassToleranceDa)})
   
@@ -148,6 +152,7 @@ peptide_search <- function(x, peptides,
              charge = x$charge, 
              pepmass = query.mass,
              peptideSequence = rv[[idx.tophit]]$sequence,
+             groundTrue.peptideSequence = x$peptideSequence,
              ms2hit = (rv[[idx.tophit]]$sequence == x$peptideSequence),
              hit = (x$peptideSequence %in% peptides[lower:upper]))
 }
