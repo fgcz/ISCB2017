@@ -52,7 +52,9 @@ library(ISCB2017)
 # consideration
 
 ```{r}
-P <- read.table("data/proteotypic_peptides.txt", col.names=c('protein','peptide','pim'))
+filename <- paste(path.package("ISCB2017"), "extdata/proteotypic_peptides.txt", sep='/')
+P <- read.table(filename, col.names=c('protein','peptide','pim'))
+
 #load("data/F244088f.RData")
 ```
 

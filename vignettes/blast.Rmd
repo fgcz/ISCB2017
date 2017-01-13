@@ -44,32 +44,22 @@ nice -19 /scratch/ncbi-blast-2.5.0+/bin/blastp \
 package.install(jsonlite)
 ```
 
+
+
 ```{r}
+
 library(jsonlite)
 library(parallel)
 DIR<-dir()
-FILES <- DIR[((grep("06548_.*json", DIR)))]     
+FILES <- DIR[((grep("PigeonPea_", DIR)))]     
 
-res <- mclapply(FILES, function(x){
-  S <- fromJSON(x); 
-  title <-NA
-  
-  if(length(S$BlastOutput2$report$results$search$hits)>0){
-     title <- S$BlastOutput2$report$results$search$hits$description[[1]]$title
-    }
-    
-  cbind(file=x,
-    expect=S$BlastOutput2$report$params$expect, 
-    query_title=S$BlastOutput2$report$results$search$query_title,
-    title=title)  
-    
-   })                 
+rv<-do.call('rbind', mclapply((FILES), function(x){
+  S<-fromJSON(x)
 
-
-res <- do.call('rbind', res)
-res<-as.data.frame(res)
-sum(is.na(res$title))
-
+  tryCatch({cbind(query_title=S$BlastOutput2$report$results$search$query_title,
+    evalue=S$BlastOutput2$report$results$search$hits$hsps[[1]]$evalue,
+    title=S$BlastOutput2$report$results$search$hits$description[[1]]$title)}, finally={NULL})
+}, mc.cores=16))
 
 ```
 

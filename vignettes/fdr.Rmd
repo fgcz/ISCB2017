@@ -6,13 +6,11 @@ date: "12/12/2016"
 output: slidy_presentation
 ---
 
-
 # Compute FDR
 
 ```{r fig.retina=3}
 # get data
 load(url('http://fgcz-s-021.uzh.ch/~cpanse/CHE_434/F205306.RData'))
-
 
 score <- sapply(F205306, function(x){x$mascotScore})
 protein <- sapply(F205306, function(x){x$proteinInformation})
@@ -23,7 +21,6 @@ decoy_hit <- grepl('REV_', protein[idx])
 FP <- cumsum(decoy_hit)
 TP <- 1:length(idx) - FP
 
-  
 FDR1 <- (2 * FP) / (TP + FP)
 FDR2 <- FP / TP
 

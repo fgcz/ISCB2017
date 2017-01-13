@@ -49,7 +49,6 @@ grep "^>sp|P21781|FGF7_HUMAN" -A 5 < swissprot \
 ```
 
 
-
 # CRAN package protViz
 
 * install R
@@ -62,10 +61,14 @@ https://CRAN.R-project.org/package=protViz
 library(protViz)
 ```
 
+# AA
+```{r}
+AA
+```
 # Compute fragmention table of 'EGVNDNEEGFFSAR'
 
 ```{R}
-fragmentIon('EGVNDNEEGFFSAR')
+fragmentIon('TAFDEAIAELDTLNEESYK')
 ```
 
 
@@ -73,16 +76,46 @@ fragmentIon('EGVNDNEEGFFSAR')
 
 ```{R}
 #source('F161375_query160.R')
-load("F161375.RData")
-plot(F161375[[160]]$mZ, F161375[[160]]$intensity, type='h')
+#load("F161375.RData")
+#plot(F161375[[160]]$mZ, F161375[[160]]$intensity, type='h')
 ```
 
 # Label tandem MS
 
+```{r}
+data(msms)
+```
+
+## TAFDEAIAELDTLNEESYK
+
 ```{r fig.retina=3}
-peakplot(peptide=F161375[[160]]$peptideSequence, 
-         spec=F161375[[160]],
-         FUN=function(b,y){
-           return (list(y=y))
-         })
+rv <- peakplot("TAFDEAIAELDTLNEESYK", msms[[1]])
+```
+
+## TAFDEAIAELDTLSEESYK
+
+```{r fig.retina=3}
+rv <- peakplot("TAFDEAIAELDTLSEESYK", msms[[2]])
+
+
+#peakplot(peptide=F161375[[160]]$peptideSequence, 
+#         spec=F161375[[160]],
+#         FUN=function(b,y){
+#           return (list(y=y))
+#         })
+```
+
+
+# example
+
+```{r}
+
+peptide_search <- function(x){
+  print(x)
+}
+
+idx <- which(sapply(F244088f, function(x){length(x$mZ)>0}))
+
+peptide_search(F244088f[[idx[1]]])
+
 ```
