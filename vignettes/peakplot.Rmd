@@ -6,18 +6,8 @@ date: "12/12/2016"
 output: slidy_presentation
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
 
-random_swap <- function(x){
-   a <- sample(length(x),2)
-   tmp <- x[a[1]]
-   x[a[1]] <- x[a[2]]
-   x[a[2]] <- tmp
-  
-   return(x)
-   }
-```
+
 
 # FASTA - get current SwissProt
 
@@ -49,7 +39,7 @@ grep "^>sp|P21781|FGF7_HUMAN" -A 5 < swissprot \
 ```
 
 
-# CRAN package protViz
+# CRAN package ISCB2017
 
 * install R
 http://stat.ethz.ch/CRAN/
@@ -57,14 +47,72 @@ http://stat.ethz.ch/CRAN/
 * install protViz
 https://CRAN.R-project.org/package=protViz
 
-```{R}
-library(protViz)
+
+* install ISCB2017
+```{r echo=TRUE}
+library(ISCB2017)
+```
+
 ```
 
 # AA
 ```{r}
 AA
 ```
+
+# Swissprot SP (TASK)
+
+- count peptides of ```swissprot_tryptic_peptides10K```
+- compute peptide weight using the function ```parentIonMass```
+- plot the peptide weight distribution using ```hist```
+
+
+
+# Determine the number of peptide candidates
+
+```{r fig.retina=3}
+library(ISCB2017)
+pim <- parentIonMass(swissprot_tryptic_peptides10K)
+hist(pim)
+
+massTolDa <- c(1E-4, 1E-3, 1E-2, 1E-1, 1, 3)
+rv.Da <- lapply(massTolDa, function(eps){
+  q <- runif(1000, 300,6000)
+  lower <- findNN_(q - eps, pim)
+  upper <- findNN_(q + eps, pim)
+
+  data.frame(massTol = eps, n = 1 + upper-lower)
+  
+})
+
+
+massTolPPM <- c(1, 5, 10, 20, 50)
+rv.PPM <- lapply(massTolPPM, function(peptideMassTolerancePPM){
+  query.mass <- runif(1000, 300,6000)
+  eps <- query.mass * peptideMassTolerancePPM * 1E-06
+  
+
+  lower <- findNN_(query.mass - eps, pim)
+  upper <- findNN_(query.mass + eps, pim)
+  
+  data.frame(massTolPPM = peptideMassTolerancePPM, n = 1 +upper - lower)
+})
+
+op <- par(mfrow=c(1,2))
+boxplot(n ~ massTol,log='y', 
+  data=do.call('rbind', rv.Da), 
+  xlab='mass tolerance [in Da]',
+  ylim=c(1,2E+5),
+  ylab='number of tryptic SP peptides mass range [300,6000]')
+
+boxplot(n ~ massTolPPM, log='y', 
+  data=do.call('rbind', rv.PPM),
+  xlab='mass tolerance [in ppm]',
+  ylim=c(1,2E+5),
+  ylab='number of tryptic SP pepitdes mass range [300,6000]')
+```
+
+
 # Compute fragmention table of 'EGVNDNEEGFFSAR'
 
 ```{R}
@@ -129,37 +177,24 @@ byIon <- function(b, y){
     return(cbind(b, y, b2_, y2_))#, c, z, c2_, z2_, yo))
 }
 
-peptide_search <- function(x, peptides, 
-                           pimIdx=parentIonMass(peptides), 
-                           peptideMassTolerancePPM=5,
-                           framentIonMassToleranceDa=0.01){
-  
-  query.mass <- ((x$pepmass  * x$charge))  - (1.007825 * (x$charge-1))
-  eps <- query.mass * peptideMassTolerancePPM * 1E-6
-  
-  lower <- findNN(query.mass - eps, pimIdx)
-  upper <- findNN(query.mass + eps, pimIdx)
-  
-  rv <- lapply(peptides[lower:upper], function(p){
-      psm(p, x, plot=FALSE, FUN=byIon)})
-  
-  rv.error <- sapply(rv, function(p){sum(abs(p$mZ.Da.error) < framentIonMassToleranceDa)})
-  
-  idx.tophit <- which(rv.error==max(rv.error))[1]
-  
-  data.frame(mass_error=eps, 
-             idxDiff = upper - lower, 
-             charge = x$charge, 
-             pepmass = query.mass,
-             peptideSequence = rv[[idx.tophit]]$sequence,
-             groundTrue.peptideSequence = x$peptideSequence,
-             ms2hit = (rv[[idx.tophit]]$sequence == x$peptideSequence),
-             hit = (x$peptideSequence %in% peptides[lower:upper]))
-}
+peptide_identification
 
-idx <- which(sapply(F244088f, function(x){length(x$mZ)>0}))
 
-S <- do.call('rbind', lapply(F244088f[idx], function(x){peptide_search(x, swissprot_tryptic_peptides10K, pim )}))
+
+idx <- which(sapply(F244088f, function(x) {
+length(x$mZ) > 0
+}))
+
+S <- do.call('rbind', lapply(F244088f[idx], function(x) {
+  peptide_identification(
+    x,
+    swissprot_tryptic_peptides10K,
+    pim,
+    peptideMassTolerancePPM = 14,
+    FUN = byIon
+  )
+}))
 
 
 ```
+
