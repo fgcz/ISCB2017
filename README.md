@@ -22,7 +22,7 @@ Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible
 ------------ |------------ | ------------- | ------------- | ------------- 
 1 | Outline for this week | break | 0.5 h | jg 
 2 | The FGCZ in Zurich | browse FGCZ page | 0.5 h | jg
-3 | Mass spectrometry (and protein analytics) | browse around for milestones in MS, form groups, introduce yourself | 1 h | jg 
+3 | Mass spectrometry (and protein analytics) | browse around for milestones in MS, form groups, introduce yourself and your task | 1 h | jg 
 4 | Getting ready for hands-on sessions | Install MQ, do git co, commits, get R packages | 1 h | CP
 5 | [PSM identification with protViz](vignettes/peakplot.Rmd) | get fasta, R (seqinR), R (digest), theoretical considerations about search space, different DBs, uniqueness of peptides.  | 2h | CP 
 6 | Protein identification VALIDATION with target-decoy strategy | [FDR](vignettes/fdr.Rmd)  | 2h | WEW 
