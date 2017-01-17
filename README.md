@@ -1,12 +1,6 @@
 # ISCB2017
 
-## Draft Overview of the week
-
-## Idea: Little modules (theory.. and respective hands-on session)
-
-**Listing of modules (buzzword & idea for hands-on & Duration & repsonisble person & what still needs to be done):**
-
-
+##Overview of the week
 
 ## Day 1 (Common Day)
 
