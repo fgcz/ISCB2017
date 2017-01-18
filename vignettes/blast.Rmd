@@ -1,5 +1,67 @@
 # Howto homology annotate fasta
 
-```bash
-blastn 
+
 ```
+ncbi-blast-2.5.0+/bin/blastp
+```
+
+## input 
+
+
+### prep
+
+```sh
+makeblastdb -dbtype prot -in fasta/uniprot/uniprot-proteome%3AUP000059680.fasta 
+makeblastdb -dbtype prot -in fasta/uniprot/uniprot-proteome%3AUP000006548.fasta 
+
+
+# uniprot-proteome%3AUP000059680.fasta
+# uniprot-proteome%3AUP000006548.fasta 
+
+nice -19 /scratch/ncbi-blast-2.5.0+/bin/blastp \
+-query ./fasta/unannotated/20160904_NCBI_Cajanus_Cajan_48522_IDs.fasta \
+-db fasta/uniprot/uniprot-proteome%3AUP000006548.fasta \
+-outfmt 13 \
+-out 06548.json \
+-num_threads 64 \
+-evalue 0.000001 \
+-max_hsps 2 \
+-max_target_seqs 2
+
+
+nice -19 /scratch/ncbi-blast-2.5.0+/bin/blastp \
+-query ./fasta/unannotated/20160904_NCBI_Cajanus_Cajan_48522_IDs.fasta \
+-db fasta/uniprot/uniprot-proteome%3AUP000059680.fasta \
+-outfmt 13 \
+-out 59680.json \
+-num_threads 64 \
+-evalue 0.000001 \
+-max_hsps 2 \
+-max_target_seqs 2
+```
+
+```{r}
+package.install(jsonlite)
+```
+
+
+
+```{r}
+
+library(jsonlite)
+library(parallel)
+DIR<-dir()
+FILES <- DIR[((grep("PigeonPea_", DIR)))]     
+
+rv<-mclapply((FILES), function(x){
+  S<-fromJSON(x)
+
+    tryCatch({cbind(query_title=S$BlastOutput2$report$results$search$query_title,
+    evalue=as.numeric(S$BlastOutput2$report$results$search$hits$hsps[[1]]$evalue),
+    title=S$BlastOutput2$report$results$search$hits$description[[1]]$title)}, finally={NULL})
+}, mc.cores=32)
+
+```
+
+
+

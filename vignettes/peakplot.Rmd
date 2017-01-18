@@ -1,0 +1,200 @@
+---
+title: "20161216_CHE434 live demo"
+author: "Christian Panse"
+date: "12/12/2016"
+
+output: slidy_presentation
+---
+
+
+
+
+# FASTA - get current SwissProt
+
+```bash
+curl ftp://ftp.uniprot.org/pub/databases/uniprot/\
+current_release/knowledgebase/complete/uniprot_sprot.fasta.gz \
+| gunzip -c \
+> swissprot
+```
+
+# Top ten organisms having the largest number of entries in swissprot
+```base
+grep "^>" < swissprot \
+| awk '$1~/_/{print $1}' \
+| awk -F"_" '{h[$NF]++}END{for (i in h){print i" "h[i]}}' \
+| sort -k2 -g -r -S128M \
+| head -n 10
+```
+
+# MS detectable peptides
+
+tryptic digest rule: cut after R or K if the C-term. residue is not P.
+```bash
+grep "^>sp|P21781|FGF7_HUMAN" -A 5 < swissprot \
+| fcat \
+| digest \
+| pim  \
+| awk -F";" '600<$2 && $2<6000{print }'
+```
+
+
+# CRAN package ISCB2017
+
+* install R
+http://stat.ethz.ch/CRAN/
+
+* install protViz
+https://CRAN.R-project.org/package=protViz
+
+
+* install ISCB2017
+```{r echo=TRUE}
+library(ISCB2017)
+```
+
+```
+
+# AA
+```{r}
+AA
+```
+
+# Swissprot SP (TASK)
+
+- count peptides of ```swissprot_tryptic_peptides10K```
+- compute peptide weight using the function ```parentIonMass```
+- plot the peptide weight distribution using ```hist```
+
+
+
+# Determine the number of peptide candidates
+
+```{r fig.retina=3}
+library(ISCB2017)
+pim <- parentIonMass(swissprot_tryptic_peptides10K)
+hist(pim)
+
+massTolDa <- c(1E-4, 1E-3, 1E-2, 1E-1, 1, 3)
+rv.Da <- lapply(massTolDa, function(eps){
+  q <- runif(1000, 300,6000)
+  lower <- findNN_(q - eps, pim)
+  upper <- findNN_(q + eps, pim)
+
+  data.frame(massTol = eps, n = 1 + upper-lower)
+  
+})
+
+
+massTolPPM <- c(1, 5, 10, 20, 50)
+rv.PPM <- lapply(massTolPPM, function(peptideMassTolerancePPM){
+  query.mass <- runif(1000, 300,6000)
+  eps <- query.mass * peptideMassTolerancePPM * 1E-06
+  
+
+  lower <- findNN_(query.mass - eps, pim)
+  upper <- findNN_(query.mass + eps, pim)
+  
+  data.frame(massTolPPM = peptideMassTolerancePPM, n = 1 +upper - lower)
+})
+
+op <- par(mfrow=c(1,2))
+boxplot(n ~ massTol,log='y', 
+  data=do.call('rbind', rv.Da), 
+  xlab='mass tolerance [in Da]',
+  ylim=c(1,2E+5),
+  ylab='number of tryptic SP peptides mass range [300,6000]')
+
+boxplot(n ~ massTolPPM, log='y', 
+  data=do.call('rbind', rv.PPM),
+  xlab='mass tolerance [in ppm]',
+  ylim=c(1,2E+5),
+  ylab='number of tryptic SP pepitdes mass range [300,6000]')
+```
+
+
+# Compute fragmention table of 'EGVNDNEEGFFSAR'
+
+```{R}
+fragmentIon('TAFDEAIAELDTLNEESYK')
+```
+
+
+# Plot tandem MS
+
+```{R}
+#source('F161375_query160.R')
+#load("F161375.RData")
+#plot(F161375[[160]]$mZ, F161375[[160]]$intensity, type='h')
+```
+
+# Label tandem MS
+
+```{r}
+data(msms)
+```
+
+## TAFDEAIAELDTLNEESYK
+
+```{r fig.retina=3}
+rv <- peakplot("TAFDEAIAELDTLNEESYK", msms[[1]])
+```
+
+## TAFDEAIAELDTLSEESYK
+
+```{r fig.retina=3}
+rv <- peakplot("TAFDEAIAELDTLSEESYK", msms[[2]])
+
+
+#peakplot(peptide=F161375[[160]]$peptideSequence, 
+#         spec=F161375[[160]],
+#         FUN=function(b,y){
+#           return (list(y=y))
+#         })
+```
+
+
+# example
+
+```{r}
+
+byIon <- function(b, y){
+    Hydrogen <- 1.007825
+    Oxygen <- 15.994915
+    Nitrogen <- 14.003074
+
+    yo <- y - Oxygen - Hydrogen - Hydrogen
+    
+    c <- b + (Nitrogen + (3 * Hydrogen))
+    z <- y - (Nitrogen + (3 * Hydrogen))
+  
+    c2_ <- (c + Hydrogen) * 0.5
+    z2_ <- (z + Hydrogen) * 0.5
+  
+    b2_ <- (b + Hydrogen) * 0.5
+    y2_ <- (y + Hydrogen) * 0.5
+
+    return(cbind(b, y, b2_, y2_))#, c, z, c2_, z2_, yo))
+}
+
+peptide_identification
+
+
+
+idx <- which(sapply(F244088f, function(x) {
+length(x$mZ) > 0
+}))
+
+S <- do.call('rbind', lapply(F244088f[idx], function(x) {
+  peptide_identification(
+    x,
+    swissprot_tryptic_peptides10K,
+    pim,
+    peptideMassTolerancePPM = 14,
+    FUN = byIon
+  )
+}))
+
+
+```
+

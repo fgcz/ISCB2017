@@ -1,0 +1,49 @@
+---
+title: "20161216_CHE434 live demo"
+author: "Christian Panse"
+date: "12/12/2016"
+
+output: slidy_presentation
+---
+
+# Compute FDR
+
+```{r fig.retina=3}
+# get data
+load(url('http://fgcz-s-021.uzh.ch/~cpanse/CHE_434/F205306.RData'))
+
+score <- sapply(F205306, function(x){x$mascotScore})
+protein <- sapply(F205306, function(x){x$proteinInformation})
+
+idx <- order(score, decreasing = TRUE)
+decoy_hit <- grepl('REV_', protein[idx])
+
+FP <- cumsum(decoy_hit)
+TP <- 1:length(idx) - FP
+
+FDR1 <- (2 * FP) / (TP + FP)
+FDR2 <- FP / TP
+
+plot(FDR1, type = 'l')
+abline(h=0.05, col='grey')
+idx.min1 <- min(which(FDR1 > 0.05))
+abline(v=idx.min1); axis(3, idx.min1, round(score[idx][idx.min1]))
+
+idx.min2 <- min(which(FDR2 > 0.05))
+points(FDR2, col='red', type='l')
+
+abline(v=idx.min2, col='red'); axis(3, idx.min2, round(score[idx][idx.min2]))
+```
+
+
+```{r fig.retina=3}
+plot(FDR1[1:10000], type = 'l')
+abline(h=0.05, col='grey')
+idx.min1 <- min(which(FDR1 > 0.05))
+abline(v=idx.min1); axis(3, idx.min1, round(score[idx][idx.min1]))
+
+idx.min2 <- min(which(FDR2 > 0.05))
+points(FDR2, col='red', type='l')
+
+abline(v=idx.min2, col='red'); axis(3, idx.min2, round(score[idx][idx.min2]))
+```
