@@ -1,5 +1,9 @@
 #!/usr/bin/python
 
+"""
+Christian Panse <cp@fgcz.ethz.ch> 2017
+code to annotate blasted FASTA
+"""
 import os
 import json
 import re
