@@ -1,25 +1,36 @@
 ---
-title: "20161216_CHE434 live demo"
-author: "Christian Panse"
-date: "12/12/2016"
+title: "peptide identification using protViz"
+author: "Christian Panse / Jonas Grossmann"
+date: "2016/01/24"
 
-output: slidy_presentation
+output: 
+  - slidy_presentation
+  - rmarkdown::html_vignette
+  
+vignette: >
+  %\VignetteIndexEntry{peakplot}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
-
-
 
 
 # FASTA - get current SwissProt
 
-```bash
-curl ftp://ftp.uniprot.org/pub/databases/uniprot/\
+```{bash}
+test -f swissprot \
+|| curl ftp://ftp.uniprot.org/pub/databases/uniprot/\
 current_release/knowledgebase/complete/uniprot_sprot.fasta.gz \
 | gunzip -c \
 > swissprot
 ```
 
+
+```{bash}
+head swissprot
+```
+
 # Top ten organisms having the largest number of entries in swissprot
-```base
+```{bash}
 grep "^>" < swissprot \
 | awk '$1~/_/{print $1}' \
 | awk -F"_" '{h[$NF]++}END{for (i in h){print i" "h[i]}}' \
@@ -27,46 +38,97 @@ grep "^>" < swissprot \
 | head -n 10
 ```
 
+#tryptic digest rule
+
+cut after R or K if the C-term. residue is not P.
+
+```{bash}
+
+```
+
 # MS detectable peptides
 
 tryptic digest rule: cut after R or K if the C-term. residue is not P.
-```bash
+
+```{bash}
 grep "^>sp|P21781|FGF7_HUMAN" -A 5 < swissprot \
 | fcat \
 | digest \
 | pim  \
-| awk -F";" '600<$2 && $2<6000{print }'
+| awk -F";" '600<$2 && $2<6000{print }' 
+
 ```
 
 
-# CRAN package ISCB2017
+# CRAN package  protViz
 
-* install R
-http://stat.ethz.ch/CRAN/
-
-* install protViz
 https://CRAN.R-project.org/package=protViz
 
+* Most frequently used R-code in the last 10 yrs
 
-* install ISCB2017
+* Tailored to our site (e.g.  proprietary software exports)
+
+* Slim, minimal dependencies for other R-packages
+
+* Used for prototyping, teaching, analysis, or just fun
+
+* install R
+
+http://stat.ethz.ch/CRAN/
+
+```{r eval=FALSE}
+install.packages('protViz')
+```
+
+#  install ISCB2017
+
+* contains data and code for hands-on-session
+
+```{r eval=FALSE}
+# urlget
+install.packages('ISCB2017')
+```
+
 ```{r echo=TRUE}
 library(ISCB2017)
 ```
 
 ```
 
-# AA
+# Amino Acids (AA)
+
 ```{r}
 AA
 ```
 
+
+# Determine peptide weight 
+
+```PANSER``` and ```GROSSMANNR```
+
+* n_term weight?
+
+* c_term weight?
+
 # Swissprot SP (TASK)
 
 - count peptides of ```swissprot_tryptic_peptides10K```
+
 - compute peptide weight using the function ```parentIonMass```
+
 - plot the peptide weight distribution using ```hist```
 
 
+
+# Compute mass windows
+
+```{r}
+peptideMassTolerancePPM <- c(1, 5, 10, 20, 50)
+```
+
+```{r}
+eps <- 1000 * peptideMassTolerancePPM * 1E-06
+```
 
 # Determine the number of peptide candidates
 
@@ -113,26 +175,49 @@ boxplot(n ~ massTolPPM, log='y',
 ```
 
 
-# Compute fragmention table of 'EGVNDNEEGFFSAR'
-
-```{R}
-fragmentIon('TAFDEAIAELDTLNEESYK')
-```
-
-
-# Plot tandem MS
-
-```{R}
-#source('F161375_query160.R')
-#load("F161375.RData")
-#plot(F161375[[160]]$mZ, F161375[[160]]$intensity, type='h')
-```
-
-# Label tandem MS
+# define the ions
 
 ```{r}
-data(msms)
+byIon <- function(b, y){
+    Hydrogen <- 1.007825
+    Oxygen <- 15.994915
+    Nitrogen <- 14.003074
+
+    yo <- y - Oxygen - Hydrogen - Hydrogen
+    
+    c <- b + (Nitrogen + (3 * Hydrogen))
+    z <- y - (Nitrogen + (3 * Hydrogen))
+  
+    c2_ <- (c + Hydrogen) * 0.5
+    z2_ <- (z + Hydrogen) * 0.5
+  
+    b2_ <- (b + Hydrogen) * 0.5
+    y2_ <- (y + Hydrogen) * 0.5
+
+    return(cbind(b, y, b2_, y2_))#, c, z, c2_, z2_, yo))
+}
 ```
+
+# Compute fragmention table of 'EGVNDNEEGFFSAR'
+
+```{r}
+fragmentIon('TAFDEAIAELDTLNEESYK', FUN=byIon)
+```
+
+# Compute a peptide spectrum match (psm)
+
+```{r}
+# Label tandem MS for protViz
+data(msms)
+plot(msms[[1]]$mZ, msms[[1]]$intensity, type='h')
+
+# Compute a peptide spectrum match 
+psm("TAFDEAIAELDTLNEESYK", msms[[1]])
+```
+
+
+
+
 
 ## TAFDEAIAELDTLNEESYK
 
@@ -158,24 +243,7 @@ rv <- peakplot("TAFDEAIAELDTLSEESYK", msms[[2]])
 
 ```{r}
 
-byIon <- function(b, y){
-    Hydrogen <- 1.007825
-    Oxygen <- 15.994915
-    Nitrogen <- 14.003074
 
-    yo <- y - Oxygen - Hydrogen - Hydrogen
-    
-    c <- b + (Nitrogen + (3 * Hydrogen))
-    z <- y - (Nitrogen + (3 * Hydrogen))
-  
-    c2_ <- (c + Hydrogen) * 0.5
-    z2_ <- (z + Hydrogen) * 0.5
-  
-    b2_ <- (b + Hydrogen) * 0.5
-    y2_ <- (y + Hydrogen) * 0.5
-
-    return(cbind(b, y, b2_, y2_))#, c, z, c2_, z2_, yo))
-}
 
 peptide_identification
 

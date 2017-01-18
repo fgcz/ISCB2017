@@ -191,6 +191,12 @@ Presentation content (I. Fromm):
 
 ## Notes by CP
 
+# Howto build the ISCB2017 R package
+
+```{r}
+roxygen2::roxygenise()
+```
+
 ### add visualization techniques 15min from combined course 
 - plus t-test alternative for boxplot N(0,1) distribution example. 
 
