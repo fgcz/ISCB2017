@@ -40,11 +40,13 @@ Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible
 
 ## Day 4 -> Republican Day
 
-## Day 5 -> Wrap up of the whole course -> identify room for improvements ;)
+## Day 5 -> Look at Pigeon Pea and Wrap up of the whole course -> identify room for improvements ;)
 
 Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible Person
 ------------ |------------ | ------------- | ------------- | ------------- 
-9 | Wrap up of the course | Course Evaluation | 1h | all
+1 | Repetition of Day 3 | Q & A | 0.5 h | all
+2 | Look at the Pigeon Pea project | Make use of what we learnt in the pigeon pea project | 1h | all
+3 | Wrap up of the course | Course Evaluation | 1h | all
  
 
 
