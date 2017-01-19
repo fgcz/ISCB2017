@@ -81,7 +81,7 @@ get RT
 X <- do.call('rbind', 
              lapply(F244088f,
                     function(x){data.frame(peptide=x$peptideSequence,
-                                           rtms2=x$rtinseconds/60)}))
+                        rtms2=x$rtinseconds/60)}))
 XIC <- merge(XIC, X, by='peptide')
 
 library(lattice)
@@ -98,18 +98,26 @@ lapply(unique(XIC$protein), function(p){
 ```
 
 ```{r}
-eps <- 0.5
+eps <- 1
 
 XIC.f <- XIC[XIC$rtms2 - eps < XIC$rt & XIC$rt < XIC$rtms2 + eps,] 
-library(lattice())
+#library(lattice())
+#xyplot(log(count,2) ~ rt|protein ,group=charge, data=XIC.f[grepl("20161115_12_GE1_b.raw", XIC.f$filename),], type='h')
 
-xyplot(log(count,2) ~ rt|protein ,group=charge, data=XIC.f[grepl("20161115_12_GE1_b.raw", XIC.f$filename),], type='h')
+
+
 ```
 
 ```{r}
 #load("data/xic.RData")
 XIC.max <- aggregate(count ~ protein + peptide + charge + filename, data=XIC.f, FUN=max)
-XIC.max <- merge(XIC, XIC.max, by.x=names(XIC.max), by.y = names(XIC.max))
+
+bwplot( (log(count)-mean(log(count)))/sd(log(count)) ~ filename|protein,data=XIC.max, layout=c(1,4), scales = list(x = list(rot = 45)))
+
+  
+M <- reshape2::dcast(XIC.max, formula = protein + peptide + charge ~ filename)
+image(as.matrix(dist(as.matrix(log(M[,4:16]))))
+#XIC.max <- merge(XIC, XIC.max, by.x=names(XIC.max), by.y = names(XIC.max))
 ```
 
 # RT normalization
