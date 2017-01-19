@@ -2,11 +2,9 @@
 title: "peptide identification using protViz"
 author: "Christian Panse / Jonas Grossmann"
 date: "2016/01/24"
-
 output: 
   - slidy_presentation
   - rmarkdown::html_vignette
-  
 vignette: >
   %\VignetteIndexEntry{peakplot}
   %\VignetteEngine{knitr::rmarkdown}

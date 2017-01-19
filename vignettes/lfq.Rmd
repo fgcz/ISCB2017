@@ -1,9 +1,14 @@
 ---
 title: "Label Free Quantification (LFQ)"
-author: "Christian Panse"
-date: "12/12/2016"
-
-output: slidy_presentation
+author: "Christian Panse / Jonas Grossmann"
+date: "2016/01/24"
+output: 
+  - slidy_presentation
+  - rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{LabelFreeQuantification}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 
@@ -44,7 +49,7 @@ plot.psmSet <- function (x, iRTpeptides = specL::iRTpeptides, ...)
 ```
 
 ```{r}
-library(specL)
+#library(specL)
 library(ISCB2017)
 ```
 
@@ -52,8 +57,8 @@ library(ISCB2017)
 # consideration
 
 ```{r}
-filename <- paste(path.package("ISCB2017"), "extdata/proteotypic_peptides.txt", sep='/')
-P <- read.table(filename, col.names=c('protein','peptide','pim'))
+#filename <- paste(path.package("ISCB2017"), "extdata/proteotypic_peptides.txt", sep='/')
+#P <- read.table(filename, col.names=c('protein','peptide','pim'))
 
 #load("data/F244088f.RData")
 ```
@@ -72,13 +77,27 @@ plot.psmSet(F244088f)
 ## xic
 
 get RT
-```{r}
+```{r fig.retina=3}
 X <- do.call('rbind', 
              lapply(F244088f,
                     function(x){data.frame(peptide=x$peptideSequence,
                                            rtms2=x$rtinseconds/60)}))
 XIC <- merge(XIC, X, by='peptide')
 
+library(lattice)
+t <- trellis.par.get()
+t$superpose.line$alpha<-0.1
+t$superpose.symbol$alpha<-0.1
+trellis.par.set(t)
+lapply(unique(XIC$protein), function(p){
+  XIC.f <- XIC[XIC$protein == p,]
+  xyplot(count ~ rt | peptide * protein, 
+         group=filename, 
+         data=XIC.f, type='h', subset=protein==p,
+      layout=c(1, 4))})
+```
+
+```{r}
 eps <- 0.5
 
 XIC.f <- XIC[XIC$rtms2 - eps < XIC$rt & XIC$rt < XIC$rtms2 + eps,] 
@@ -93,11 +112,13 @@ XIC.max <- aggregate(count ~ protein + peptide + charge + filename, data=XIC.f, 
 XIC.max <- merge(XIC, XIC.max, by.x=names(XIC.max), by.y = names(XIC.max))
 ```
 
-## RT normalization
+# RT normalization
 
+
+http://bioconductor.org/packages/release/data/experiment/vignettes/msqc1/inst/doc/chromatography.html
 
 # Two Group
-```{r}
+```{r fig.retina=3}
 #S <- read.table("data/p1946_prx.tsv", sep='\t', header=TRUE)
 gg <- c(rep('G', 6), rep('GE', 6))
 dim(prxmq)
