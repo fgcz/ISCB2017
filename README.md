@@ -67,6 +67,7 @@ Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible
 ## Participant
 
 no.	| 	Name	Academic Qualification	| 	In Bfabric @ p2364	| 	E-mail
+------------ |------------ | ------------- | -------------
 1.		| Dr. (Ms.) Yasin Jeshima	Ph. D.		| YES		| jeshimakhanyasin@gmail.com
 2.		| 	Dr. (Ms.) Neha Jain	Ph. D.		| YES	| 	jain19neha@gmail.com
 3.		| Dr. (Ms.) Sangeeta Singh	Ph. D.	| 	YES	| 	sangeeta10mar@gmail.com
