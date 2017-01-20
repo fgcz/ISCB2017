@@ -49,124 +49,14 @@ Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible
  
 
 
-additionally if we have too much time ;)
+### additionally if we have too much time ;)
 - Quantitative proteomics strategies (an overview) | break | 1h | jg | Combo-course day4 (NSK) (show 12)
 - Label-free quantification | MQ: txt-tables | 1h | jg | Combo-course day4 (partI) (show 13) 
+- YeastData: RNASeq vs PrX: Number crunch | Shiny-app | jg | 1h
 
-
-
-
-m
-
-a
-
-k
-
-e
-
-s
-
-o
-
-m
-
-e
-
-s
-
-p
-
-a
-
-c
-
-e
-
-
-
-
-————————————————————
-Preparations
-————————————————————
-
-
-
-
-### Day 1
-
-KeepOrSkip | Theory Module | Hands-on Module | Duration | Responsible person | Action needed
------------- |------------ | ------------- | ------------- | ------------- | ------------- 
-Keep | Outline for this week | break | 0.5 h | jg | tbd at the very end (show 1)
-Keep | The FGCZ in Zurich | browse FGCZ page | 0.5 h | jg | Jonas (show 2) -> DONE
-Keep | Mass spectrometry (and protein analytics) | browse around for milestones in MS, form groups, introduce yourself | 1 h | jg | Combo course day2 first slides (show 3)  -> DONE
-Keep | Getting ready for hands-on sessions | Install MQ, do git co, commits, get R packages | 2 h | CP | to-be-prepared (show 4)
-Keep | [PSM identification with protViz](vignettes/peakplot.Rmd) | get fasta, R (seqinR), R (digest), theoretical considerations about search space, different DBs, uniqueness of peptides.  | 2h | CP | workshop to be prepared (cp) (show 5)
-Keep | Protein identification with search engines / include [FDR](vignettes/fdr.Rmd) | tbd  | 2h | WEW | workshop to be prepared (cp) (show 5)
-Keep | [MS and different activiation techniques](vignettes/peakplot.Rmd) | protViz & mgfs & labelling of spectra | 1h | CP?? | (show 6)
-~~Skip~~ | ~~PTMs~~ | ~~restricted and unrestricted search, spectral library search (wew)~~ | ~~1h~~ | ~~WEW??~~ | ~~Theo part (ETH lecture) , workshop! (show 7)~~
-Keep | Experimental design in proteomcis experiments | Annotation of samples in Bfabric | 1h | jg | to-be-prepared (show 8)
-Keep | Conclusion of day 1 | Q & A | 1h | xxx | to-be-prepared (show 9)
-
-### Day 2
-
-KeepOrSkip | Theory Module | Hands-on Module | Duration | Responsible person | Action needed
------------- |------------ | ------------- | ------------- | ------------- | -------------  
-Keep | Repetition and wrap up of Day 1 | Q & A | 0.5 h | jg | to-be-prepared (conclusion day1) (show 10)
-Keep | Tools for protein identification | Look at MQ and start a search | 1h | jg | to-be-prepared (show 11)
-PrepareButSkip | Quantitative proteomics strategies (an overview) | break | 1h | jg | Combo-course day4 (NSK) (show 12)
-Keep | Label-free quantification | MQ: txt-tables | 1h | jg | Combo-course day4 (partI) (show 13) 
-Keep | Quantitative protein matrices | Visualizing QMs in R. R-quantable  | 1h | (wew?) | Combo-course day4 (partII) (show 14)
-Keep | Two group analysis for Yeast, grown on different nutrient sources | Analysing 2 groups in R-quantable | 2h | (wew?) | to-be-prepared (show 15)
-Keep | Principle of ORAs |  Webgestalt w YEAST results | 1h | jg | Combo-course day4 (partI) (show 20)
-Keep | Webtools for model organisms | Visualizing results on a cellular overview map (YeastCyc) | 1h | cpNjg | to-be-prepared (show 19)
-Keep | Conclusion of day 2 | Q & A | 1h | jg | to-be-prepared (show 16)
-
-
-
-### Day 3
-KeepOrSkip |Theory Module | Hands-on Module | Duration | Responsible person | Action needed
------------- |------------ | ------------- | ------------- | ------------- | -------------  
-~~Skip~~ | ~~Repetition and wrap up of Day 2~~| ~~Q & A ~~| ~~0.5 h~~ | ~~cp~~ | ~~to-be-prepared (show 17)~~
-~~Skip~~ | ~~Model organisms vs custom databases / blast ~~| ~~Pigeon pea DB? status? / blast~~| ~~1h~~ | ~~jg/cp~~ | ~~to-be-prepared (show 18)~~
-PrepareButSkip | Other programmatic tools for downstream analysis (BiomaRt, StringDB, Setrank) | Biomart, String, Setrank | 1h | cpNwew | to-be-prepared (show 21)
-~~Skip~~ | ~~RNAseq vs LFQ, What is to expect~~ | ~~Number game, log2Correlation~~ | ~~1h~~ | ~~jg~~ | ~~Combo-course day5 (show 22)~~
-
-### Day 4 -> moved to Day ZERO
-
-- Socio Economics
--> Phone Call scheduled Thursday, 27th of Oct.
-- email: ingrid.fromm@bfh.ch
-- phone: 031 910 2192 
-- LI: https://www.linkedin.com/in/ingrid-fromm-phd-8a74085b
-
-
-Phone conference: Thu, 27.10.2016 (11.45 - 12:03)
-- first get in touch: Week: 23.-27. January -> Tentatively fixed.. !!
-- where do you see common ground? Where? -> aware of the problem?
---> somebody from ETH doing socio economics.. (Ralph?)
---> Overview of Socio Enomics .. 
-- what do you do?
---> We get a simple presentation.. & I will send something similar.. 
-- what kind of data do you have? --> we will find out from her presentations
-- what kind of statistics do you do? --> we will find out from her presentations 
-- After reading the presentation I will have a hard time to find common ground
-
-Presentation content (I. Fromm):
-- Regional aspects with respect to production over the past decades
-- Which varieties are grown where? 
-- Which aspects are important for growing this variety and not the other
-
-### Common Ground: (potentially on day 1)
-- How is your data "sampled"?
-- What is the N?
-- How is N defined?
-- How are outliers identified and handled?
-- How are missing values handled?
-- What statistics are used to analyze the data?
 
 
 ## Organisational issues:
-(check here for templates: https://lgatto.github.io/2014-11-06-UZH/)
 
 ### Student should bring:
 - own laptop (Windows or Mac/Linux w Virtual Box and Windows instance)
@@ -174,10 +64,22 @@ Presentation content (I. Fromm):
 - some free space (20gigs at least)
 
 
-## Students
-- 8-10 PhD students/postdocs
-- some knowledge of biology (DNA -> mRNA -> Proteins -> Proteinfuntions (enzymes)
-- proven skills in (ideally) R (or python)
+## Participant
+
+no.	| 	Name	Academic Qualification	| 	In Bfabric @ p2364	| 	E-mail
+1.		| Dr. (Ms.) Yasin Jeshima	Ph. D.		| YES		| jeshimakhanyasin@gmail.com
+2.		| 	Dr. (Ms.) Neha Jain	Ph. D.		| YES	| 	jain19neha@gmail.com
+3.		| Dr. (Ms.) Sangeeta Singh	Ph. D.	| 	YES	| 	sangeeta10mar@gmail.com
+4.		| 	Dr. Bikram Pratap Singh	Ph. D.	| 	YES	| 	bikrambotany@gmail.com
+5.		| 	Mr. R. Maniraj	M. Phil.	| 	YES	| 	rmani607@gmail.com
+6.		| 	Ms. Madhurima Chatterjee	M. Tech.	| 	YES	| 	mchatterjee008@gmail.com
+7.		| 	Mr. Ajay  Kumar Mehto	M. Sc.	| 	YES		| ajaybioinfo@gmail.com
+8.		| 	Ms. Sufiya Farhat	M. Sc.	| 	YES	| 	farhatsophie@gmail.com
+9.		| 	Ms. Pragya Mishra	M. Sc.	| 	YES	| 	pragya.bioinfo@gmail.com
+10.	| 		Mr. P. Pradeep	M. Sc.		| NO		| pradeep.papolu@gmail.com
+11.	| 		Ms. Shweta Singh	M. Sc.	| 	YES		| shwetaasinngh@gmail.com
+12.	| 		Ms. Preeti Nandi	M. Sc.	| 	NO		| Reddypreethi.reddy@gmail.com
+13.	| 		Ms. Nisha Singh	M.Sc.	| 	YES	| 	singh.nisha88@gmail.com
 
 
 ## Publications to study (upfront)
@@ -186,6 +88,8 @@ Presentation content (I. Fromm):
 - LFQ -> https://www.ncbi.nlm.nih.gov/pubmed/23391308
 - MSQC1 -> https://www.ncbi.nlm.nih.gov/pubmed/27130639
 - Top3 Protein quantification -> https://www.ncbi.nlm.nih.gov/pubmed/20576481
+
+
 
 
 ## Notes by CP
