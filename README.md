@@ -34,8 +34,7 @@ Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible
 3 | Protein, Peptide, Mass-spec view and LFQ | Manual LFQ n testing w cp | 2h | jg & cp
 4 | Experimental design in quant experiments | Looking at annotation of samples in Bfabric | 1h | jg
 5 | Two group analysis for Yeast, grown on different nutrient sources | Analysing 2 groups in R-quantable | 2h | WEW
-6 | Principle of ORAs |  Webgestalt w YEAST results | 1h | jg 
-7 | Webtools for model organisms | Visualizing results on a cellular overview map (YeastCyc) | 1h | cpNjg
+6 & 7 | Principle of ORA and Webtools for model organisms |  Webgestalt, StringDB, YeastCyc w YEAST results | 2h | cpNjg 
 8 | Conclusion of day 2 | Q & A | 1h | jg 
 
 ## Day 4 -> Republican Day
@@ -45,7 +44,7 @@ Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible
 Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible Person
 ------------ |------------ | ------------- | ------------- | ------------- 
 1 | Repetition of Day 3 | Q & A | 0.5 h | all
-2 | Look at the Pigeon Pea project | Make use of what we learnt in the pigeon pea project | 1h | all
+2 | Look at the Pigeon Pea project | Make use of what we learnt in the pigeon pea project | 3h | all
 3 | Wrap up of the course | Course Evaluation | 1h | all
  
 
