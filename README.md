@@ -64,7 +64,7 @@ Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible
 - some free space (20gigs at least)
 
 
-## Participant
+## Participants
 
 no.	| 	Name	Academic Qualification	| 	In Bfabric @ p2364	| 	E-mail
 ------------ |------------ | ------------- | -------------
@@ -81,6 +81,9 @@ no.	| 	Name	Academic Qualification	| 	In Bfabric @ p2364	| 	E-mail
 11.	| 		Ms. Shweta Singh	M. Sc.	| 	YES		| shwetaasinngh@gmail.com
 12.	| 		Ms. Preeti Nandi	M. Sc.	| 	NO		| Reddypreethi.reddy@gmail.com
 13.	| 		Ms. Nisha Singh	M.Sc.	| 	YES	| 	singh.nisha88@gmail.com
+
+## Bfabric Project
+http://fgcz-bfabric.uzh.ch/bfabric/userlab/show-project.html?projectId=2364
 
 
 ## Publications to study (upfront)
