@@ -13,7 +13,8 @@ Depends:
 Imports:
     protViz,
     lattice,
-    parallel
+    parallel,
+    reshape2
 Suggests:
     lattice,
     RUnit,

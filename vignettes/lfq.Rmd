@@ -78,29 +78,35 @@ plot.psmSet(F244088f)
 
 get RT
 ```{r fig.retina=3}
-X <- do.call('rbind', 
-             lapply(F244088f,
-                    function(x){data.frame(peptide=x$peptideSequence,
-                        rtms2=x$rtinseconds/60)}))
-XIC.id <- merge(XIC, X, by='peptide')
-
 library(lattice)
-t <- trellis.par.get()
-t$superpose.line$alpha<-0.1
-t$superpose.symbol$alpha<-0.1
-trellis.par.set(t)
-lapply(unique(XIC$protein), function(p){
-  XIC.f <- XIC.id[XIC.id$protein == p,]
-  xyplot(count ~ rt | peptide * protein, 
-         group=filename, 
-         data=XIC.f, type='h', subset=protein==p,
-      layout=c(1, 4))})
+xyplot(peptide~rt| filename, group=grepl('GE', filename), data=peptide.rt)
+```
+
+
+```{r}
+pmax <- aggregate(score ~ filename + peptide, FUN=max, data=peptide.rt)
+peptide.rt.max <- merge(peptide.rt, pmax, by=c('peptide', 'filename', 'score'))
+
+
+XIC.rt <- merge(XIC, peptide.rt.max, by=c('peptide', 'filename'))
+head(XIC.rt)
+
+#t <- trellis.par.get()
+#t$superpose.line$alpha<-0.1
+#t$superpose.symbol$alpha<-0.1
+#trellis.par.set(t)
+#lapply(unique(XIC$protein), function(p){
+#  XIC.f <- XIC.id[XIC.id$protein == p,]
+#  xyplot(count ~ rt | peptide * protein, 
+#         group=filename, 
+#         data=XIC.f, type='h', subset=protein==p,
+#      layout=c(1, 4))})
 ```
 
 ```{r}
-eps <- 0.5
+eps <- 0.25
 
-XIC.f <- XIC.id[XIC.id$rtms2 - eps < XIC.id$rt & XIC.id$rt < XIC.id$rtms2 + eps, ] 
+XIC.rt.filtered <- XIC.rt[XIC.rt$rt.y - eps < XIC.rt$rt.x & XIC.rt$rt.x < XIC.rt$rt.y + eps, ] 
 
 
 #library(lattice())

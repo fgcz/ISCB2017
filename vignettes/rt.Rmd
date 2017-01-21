@@ -38,12 +38,12 @@ getMascot <- function(fn){
  
     message(length(get(fn)))
     r <- lapply(get(fn), function(x){
-      if(x$peptideSequence %in% PP && x$mascotScore > 30){
+      if(x$peptideSequence %in% PP && x$mascotScore > 15){
       title <- unlist(strsplit(as.character(x$title), split='/'))
       data.frame(peptide=x$peptideSequence, 
                  score=x$mascotScore,
-               rt=x$rtinseconds, 
-               title = title[length(title)])
+               rt=x$rtinseconds / 60, 
+               filename = title[length(title)])
       } else{NULL}
     })
     rr <- do.call('rbind', r[which(!sapply(r, is.null))]) 
