@@ -1,0 +1,40 @@
+---
+title: "Label Free Quantification (LFQ)"
+author: "Christian Panse / Jonas Grossmann"
+date: "2016/01/24"
+output: 
+  - slidy_presentation
+  - rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{LabelFreeQuantification}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+
+library(ISCB2017)
+```
+
+```{r echo=FALSE}
+X <- do.call('rbind', 
+             lapply(F244088f,
+                    function(x){data.frame(peptide=x$peptideSequence,
+                        rtms2=x$rtinseconds/60)}))
+
+PP<-unique(X$peptide)
+```
+
+```{r}
+r <- lapply(F247106, function(x){
+  if(x$peptideSequence %in% PP){
+    title <- unlist(strsplit(as.character(x$title), split='/'))
+    data.frame(peptide=x$peptideSequence, 
+               rt=x$rtinseconds, 
+               title = title[length(title)])
+    } else{NULL}
+  })
+
+rr <- do.call('rbind', r[which(!sapply(r, is.null))])
+```
+
