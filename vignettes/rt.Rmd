@@ -38,9 +38,10 @@ getMascot <- function(fn){
  
     message(length(get(fn)))
     r <- lapply(get(fn), function(x){
-      if(x$peptideSequence %in% PP){
+      if(x$peptideSequence %in% PP && x$mascotScore > 30){
       title <- unlist(strsplit(as.character(x$title), split='/'))
       data.frame(peptide=x$peptideSequence, 
+                 score=x$mascotScore,
                rt=x$rtinseconds, 
                title = title[length(title)])
       } else{NULL}
@@ -54,6 +55,8 @@ rrr <- lapply(mascotfiles, getMascot)
  
 
 
-rrr <- do.call('rbind', rrr)
+peptide.rt  <- do.call('rbind', rrr)
+save(peptide.rt, file='data/pepitde_rt.RData')
+xyplot(peptide~rt/60|title, group=grepl('GE', title), data=peptide.rt)
 ```
 
