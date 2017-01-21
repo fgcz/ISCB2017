@@ -1,0 +1,19 @@
+---
+title: "fdr"
+author: "Witold Wolski"
+date: "January 21, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(bibliospec)
+dir("C:/Users/wolski//Dropbox/fgcz_ISCB_india2017_protInfCourse/datYeast/")
+BB <- Blib()
+BB$build(c("C:/Users/wolski/Dropbox/fgcz_ISCB_india2017_protInfCourse/datYeast/F228570.dat","C:/Users/wolski/Dropbox/fgcz_ISCB_india2017_protInfCourse/datYeast/F228574.dat"),outfile = "C:/Users/wolski//Dropbox/fgcz_ISCB_india2017_protInfCourse/datYeast/yeast2.blib")
+
+```
