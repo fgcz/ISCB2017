@@ -29,18 +29,31 @@ PP<-unique(X$peptide)
 
 mascotfiles <- c('F247106', 'F247107', 'F247108', 'F247110', 'F247111', 'F247112', 'F247113', 'F247114', 'F247115', 'F247116', 'F247117', 'F247118', 'F247120')
 
-rrr <- lapply(mascotfiles, function(fn){
+
+getMascot <- function(fn){
+ 
+  message(paste('load', fn))
+
   load(paste("data/", fn, '.RData', sep=''))
- lapply(get(fn), function(x){
-  if(x$peptideSequence %in% PP){
-    title <- unlist(strsplit(as.character(x$title), split='/'))
-    data.frame(peptide=x$peptideSequence, 
+ 
+    message(length(get(fn)))
+    r <- lapply(get(fn), function(x){
+      if(x$peptideSequence %in% PP){
+      title <- unlist(strsplit(as.character(x$title), split='/'))
+      data.frame(peptide=x$peptideSequence, 
                rt=x$rtinseconds, 
                title = title[length(title)])
-    } else{NULL}
-  })
+      } else{NULL}
+    })
+    rr <- do.call('rbind', r[which(!sapply(r, is.null))]) 
+  }
 
-rr <- do.call('rbind', r[which(!sapply(r, is.null))])
-})
+    
+rrr <- lapply(mascotfiles, getMascot)
+
+ 
+
+
+rrr <- do.call('rbind', rrr)
 ```
 
