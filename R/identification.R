@@ -1,5 +1,49 @@
 #R
 
+
+#' Title
+#'
+#' @param x 
+#' @param iRTpeptides 
+#' @param ... 
+#'
+#' @return
+#' @export
+#'
+plot.psmSet <- function (x, iRTpeptides = specL::iRTpeptides, ...) 
+{
+  rt <- unlist(lapply(x, function(x) {
+    x$rt
+  }))
+  pepmass <- unlist(lapply(x, function(xx) {
+    xx$pepmass
+  }))
+  peptide <- unlist(lapply(x, function(xx) {
+    xx$peptideSequence
+  }))
+  idx.iRT <- which(peptide %in% iRTpeptides$peptide)
+  charge <- unlist(lapply(x, function(xx) {
+    xx$charge
+  }))
+  filename <- as.numeric(as.factor(unlist(lapply(x, function(xx) {
+    xx$fileName
+  }))))
+  plot(pepmass ~ rt, pch = filename, col = charge, main = "LCMS map", 
+       xlab = "retention time", ylab = "peptide mass", ...)
+  cc <- sort(unique(charge))
+  legend("topleft", "iRT peptides", pch = 22)
+  legend("left", paste(cc, "+", sep = ""), col = cc, pch = 22, 
+         title = "charge")
+  text(rt, pepmass, 1:length(rt), pos = 3, col = charge, cex = 0.5)
+  fn <- unique(unlist(lapply(x, function(xx) {
+    xx$fileName
+  })))
+  n <- nchar(fn)
+  #legend("bottomright", substr(fn, n - 25, n), pch = unique(filename), 
+  #    cex = 1, title = "input file names")
+  points(rt[idx.iRT], pepmass[idx.iRT], pch = 22, cex = 2)
+}
+
 .byIon <- function(b, y){
   Hydrogen <- 1.007825
   Oxygen <- 15.994915
@@ -42,6 +86,7 @@ peptide_identification <- function(x,
   
   query.mass <-
     ((x$pepmass  * x$charge))  - (1.007825 * (x$charge - 1))
+    
   eps <- query.mass * peptideMassTolerancePPM * 1E-6
   
   lower <- findNN(query.mass - eps, pimIdx)

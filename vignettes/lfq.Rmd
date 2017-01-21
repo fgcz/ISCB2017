@@ -98,9 +98,11 @@ lapply(unique(XIC$protein), function(p){
 ```
 
 ```{r}
-eps <- 2
+eps <- 0.5
 
 XIC.f <- XIC.id[XIC.id$rtms2 - eps < XIC.id$rt & XIC.id$rt < XIC.id$rtms2 + eps, ] 
+
+
 #library(lattice())
 #xyplot(log(count,2) ~ rt|protein ,group=charge, data=XIC.f[grepl("20161115_12_GE1_b.raw", XIC.f$filename),], type='h')
 

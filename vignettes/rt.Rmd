@@ -26,7 +26,12 @@ PP<-unique(X$peptide)
 ```
 
 ```{r}
-r <- lapply(F247106, function(x){
+
+mascotfiles <- c('F247106', 'F247107', 'F247108', 'F247110', 'F247111', 'F247112', 'F247113', 'F247114', 'F247115', 'F247116', 'F247117', 'F247118', 'F247120')
+
+rrr <- lapply(mascotfiles, function(fn){
+  load(paste("data/", fn, '.RData', sep=''))
+ lapply(get(fn), function(x){
   if(x$peptideSequence %in% PP){
     title <- unlist(strsplit(as.character(x$title), split='/'))
     data.frame(peptide=x$peptideSequence, 
@@ -36,5 +41,6 @@ r <- lapply(F247106, function(x){
   })
 
 rr <- do.call('rbind', r[which(!sapply(r, is.null))])
+})
 ```
 
