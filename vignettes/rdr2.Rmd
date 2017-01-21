@@ -12,8 +12,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 library(bibliospec)
-dir("C:/Users/wewol/Dropbox/fgcz_ISCB_india2017_protInfCourse/datYeast/")
+dir("C:/Users/wolski//Dropbox/fgcz_ISCB_india2017_protInfCourse/datYeast/")
 BB <- Blib()
-BB$build("C:/Users/wewol/Dropbox/fgcz_ISCB_india2017_protInfCourse/datYeast/F228570.dat",outfile = "yeast.blib")
+BB$build(c("C:/Users/wolski/Dropbox/fgcz_ISCB_india2017_protInfCourse/datYeast/F228570.dat","C:/Users/wolski/Dropbox/fgcz_ISCB_india2017_protInfCourse/datYeast/F228574.dat"),outfile = "C:/Users/wolski//Dropbox/fgcz_ISCB_india2017_protInfCourse/datYeast/yeast2.blib")
 
 ```
