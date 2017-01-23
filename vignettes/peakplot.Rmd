@@ -14,6 +14,10 @@ vignette: >
 
 # FASTA - get current SwissProt
 
+```{bash echo=FALSE}
+export PATH=$PATH:~/bin/
+```
+
 ```{bash}
 test -f swissprot \
 || curl ftp://ftp.uniprot.org/pub/databases/uniprot/\
@@ -50,9 +54,9 @@ tryptic digest rule: cut after R or K if the C-term. residue is not P.
 
 ```{bash}
 grep "^>sp|P21781|FGF7_HUMAN" -A 5 < swissprot \
-| fcat \
-| digest \
-| pim  \
+| ~/bin/fcat \
+| ~/bin/digest \
+| ~/bin/pim  \
 | awk -F";" '600<$2 && $2<6000{print }' 
 
 ```
