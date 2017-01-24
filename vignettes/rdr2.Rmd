@@ -1,19 +1,319 @@
 ---
-title: "fdr"
+title: "FDR - false discovery rate estimation from decoys"
 author: "Witold Wolski"
 date: "January 21, 2017"
-output: html_document
+output: 
+  - slidy_presentation
+  - rmarkdown::html_vignette
 ---
 
+
 ```{r setup, include=FALSE}
+
 knitr::opts_chunk$set(echo = TRUE)
+rm(list=ls())
+library(plyr)
+library(ISCB2017)
+
+```
+
+# Overview MS
+
+- proteotypic peptides 
+- FDR as function of score
+- finding score given FDR
+- various FDR levels
+- protein inference problem
+
+# Overview R
+
+- data frames
+- tabulating data `table`
+- subsetting data frames using `subset` and `[]`
+- aggregating data using plyr (`ddply`)
+- histograms  `hist`
+- comparing lists using `intersect` and `setdiff`
+- the `with` function
+
+# Peptide annotation
+
+```{r}
+data("peptide_proteinAnnotation")
+head(peptide_proteinAnnotation)
+prots <- peptide_proteinAnnotation
+
+```
+
+# Number of PSMs per Protein
+
+
+```{r fig.cap="number of PSMs per protein"}
+
+#prots <- read.table(file="../data/peptide_proteinAnnotation.txt")
+tmp <- table(prots$proteinID)
+plot(table(prots$proteinID), ylab="# of PSM/protein", xlab="protein", axes=F)
+axis(1)
+axis(2)
+names(tmp)[1:10]
+
+```
+
+# Number of proteins matched by one peptide
+
+```{r fig.cap="nr. of proteins matched by one peptide"}
+tmp <- table(prots$peptideSequence)
+plot(sort(tmp), axes=F, ylab="# of protein per peptide", xlab="unique peptide")
+axis(1)
+axis(2)
+
+```
+
+# Length of peptide vs number of proteins matched
+
+```{r fig.cap="length of peptide vs # proteins matched"}
+
+x<-nchar(names(tmp))
+plot(x,tmp, xlab="length of peptide sequence", ylab="nr of proteins assigned",axes=F)
+axis(1)
+axis(2)
+
 ```
 
 
 ```{r}
-library(bibliospec)
-dir("C:/Users/wolski//Dropbox/fgcz_ISCB_india2017_protInfCourse/datYeast/")
-BB <- Blib()
-BB$build(c("C:/Users/wolski/Dropbox/fgcz_ISCB_india2017_protInfCourse/datYeast/F228570.dat","C:/Users/wolski/Dropbox/fgcz_ISCB_india2017_protInfCourse/datYeast/F228574.dat"),outfile = "C:/Users/wolski//Dropbox/fgcz_ISCB_india2017_protInfCourse/datYeast/yeast2.blib")
+as.character(prots[ prots$peptideSequence == names(tmp[x>30 & tmp >50]),"proteinID"])
 
 ```
+
+# Looking at the peptide spectrum matches for the yeast dataset
+
+Load data.
+
+```{r}
+# specMeta <- read.table(file = "../data/psmMatchesAnnotated.txt",stringsAsFactors = F)
+data("psmMatchesAnnotated")
+lapply(psmMatchesAnnotated,class)
+for(i in 1:ncol(psmMatchesAnnotated)){
+  if(class(psmMatchesAnnotated[[i]])=="factor"){
+    psmMatchesAnnotated[[i]]<-as.character(psmMatchesAnnotated[[i]])
+  }
+}
+lapply(psmMatchesAnnotated,class)
+
+specMeta <- psmMatchesAnnotated
+table(specMeta$fileName)
+```
+
+
+```{r}
+tmp <- specMeta$fileName%in%unique(specMeta$fileName)[1]
+Glucdata <- specMeta[tmp,]
+tmp <- specMeta$fileName%in%unique(specMeta$fileName)[2]
+Ethanodata <- specMeta[tmp,]
+
+```
+
+# Compute function of FDR given score
+
+```{r}
+
+computeFDRFunction <- function(score, proteinID, decoy = "REV_" ){
+  idx <- order(score, decreasing = TRUE)
+  score <- score[idx]
+  decoy_hit <- grepl(decoy, proteinID[idx])
+  
+  FP <- cumsum(decoy_hit)
+  TP <- 1:length(idx) - FP
+  
+  FDR1 <- (2 * FP) / (TP + FP)
+  FDR2 <- FP / TP
+  return(list(decoy_hit = decoy_hit, score = score , FDR1 = FDR1 ,FDR2 = FDR2))
+}
+
+```
+
+# Helper function to make histogram of the decoy (FP) and non decoy (TP + FP) scores.
+
+```{r}
+
+histWithFDR <- function(data){
+  tx <- with(data,hist(score2,plot = FALSE, breaks=100))
+  t1<-with(data,hist(score2[!grepl("REV_",proteinID)],breaks=tx$breaks,main="",xlab="score"))
+  with(data,hist(score2[grepl("REV_",proteinID)],add=T,breaks = t1$breaks, col=2))
+  cff <- with(data,computeFDRFunction(score2 , proteinID))
+  par(new=T)
+  with(cff,plot(score,FDR1*100, type="l",col=4,lwd=2,xlab=NA,ylab=NA,axes=FALSE))
+  axis(side = 4)
+  mtext(side = 4, line = 3, 'Number genes selected')
+  return(cff)
+}
+
+```
+
+# PSM level FDR vs Score
+
+```{r}
+cff <- histWithFDR(Glucdata)
+with(cff,summary(score[decoy_hit]))
+with(cff,summary(score[!decoy_hit]))
+
+```
+
+# FDR is a function of the score $FDR = f(score)$.
+
+- Controlling FDR means finding the inverse. 
+- Find score given an FDR $score = i(FDR)$ and remove all PSM's with lower score. 
+
+```{r}
+fdr = 0.01
+scthresh <-min(cff$score[cff$FDR1 < fdr])
+scthresh
+```
+
+
+# Filter dataset given score
+
+```{r}
+Glucdata1 <- subset(Glucdata, score2 > scthresh)
+```
+
+
+## What is the FDR before and after filtering?
+
+```{r getFDR}
+getFDR <- function(data){
+  (2 * sum(grepl("REV_",data$proteinID ))) / nrow(data)
+}
+```
+
+
+```{r}
+getFDR(Glucdata)*100
+getFDR(Glucdata1)*100
+cff <- histWithFDR(Glucdata1)
+with(cff,summary(score[decoy_hit]))
+with(cff,summary(score[!decoy_hit]))
+
+```
+
+
+# Precursor level FDR
+
+```{r}
+GlucdataPrec <- ddply(Glucdata, .(peptideModSeq, precursorCharge),function(x){x[which.max(x$score2),]})
+getFDR(GlucdataPrec) * 100
+
+```
+
+
+
+```{r plotPrecursorLevel, fig.cap="Precursor level score distribution"}
+
+cff <- histWithFDR(GlucdataPrec)
+with(cff,summary(score[decoy_hit]))
+with(cff,summary(score[!decoy_hit]))
+
+```
+
+# Exercise : Control the Precursor level FDR on 1% level.
+
+
+
+# Modsequence level FDR
+
+
+```{r}
+GlucdataModPep <- ddply(Glucdata, .(peptideModSeq),function(x){x[which.max(x$score2),]})
+getFDR(GlucdataModPep) * 100
+
+```
+
+
+
+```{r plotModPeptideLevel, fig.cap="Peptide level score distribution"}
+
+cff <- histWithFDR(GlucdataModPep)
+with(cff,summary(score[decoy_hit]))
+with(cff,summary(score[!decoy_hit]))
+
+```
+
+
+# Peptide Level FDR
+
+
+```{r}
+GlucdataPep <- ddply(Glucdata, .(peptideSeq),function(x){x[which.max(x$score2),]})
+getFDR(GlucdataPep) * 100
+
+```
+
+
+```{r plotPeptideLevel, fig.cap="Peptide level score distribution"}
+cff <- histWithFDR(GlucdataPep)
+with(cff,summary(score[decoy_hit]))
+with(cff,summary(score[!decoy_hit]))
+
+```
+
+# Protein Level FDR
+
+```{r}
+GlucdataProt <- ddply(Glucdata, .(proteinID), function(x){data.frame(x[which.max(x$score2),],nrPSM=nrow(x))  })
+getFDR(GlucdataProt) * 100
+nrow(GlucdataProt)
+```
+
+```{r proteinLevel, fig.cap="Protein level score distribution"}
+cff <- histWithFDR(GlucdataProt)
+with(cff,summary(score[decoy_hit]))
+with(cff,summary(score[!decoy_hit]))
+
+```
+
+# Control FDR on protein level using score
+
+```{r echo=FALSE}
+fdr = 0.01
+scthresh <-min(cff$score[cff$FDR1 < 0.01])
+scthresh
+
+```
+
+
+```{r echo=FALSE}
+GlucdataProt0.01 <- subset(GlucdataProt, score2 > scthresh)
+nrow(GlucdataProt0.01)
+getFDR(GlucdataProt0.01) * 100
+```
+
+
+
+
+# Removing Porteins identified by a single PSM
+
+Improves FDR by removing "single hit wonders".
+
+```{r proteinLevel2, fig.cap="Protein level score distribution"}
+GlucdataProt2 <- (subset(GlucdataProt, nrPSM > 1))
+nrow(GlucdataProt2)
+getFDR(GlucdataProt2) * 100
+
+cff <- histWithFDR(GlucdataProt2)
+with(cff,summary(score[decoy_hit]))
+with(cff,summary(score[!decoy_hit]))
+
+```
+
+# Compare results
+
+Compare portein lists obtained by removing single hit wonders with those by 
+controlling fdr using score.
+
+```{r}
+length(intersect(GlucdataProt2$proteinID, GlucdataProt0.01$proteinID))
+length(setdiff(GlucdataProt2$proteinID, GlucdataProt0.01$proteinID))
+length(setdiff(GlucdataProt0.01$proteinID,GlucdataProt2$proteinID ))
+
+```
+
