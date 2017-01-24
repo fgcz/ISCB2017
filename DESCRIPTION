@@ -2,7 +2,7 @@ Package: ISCB2017
 Type: Package
 Title: Visualizing and Analyzing Mass Spectrometry Related Data in
     Proteomics
-Version: 0.0.9
+Version: 0.0.10
 Author: Christian Panse <cp@fgcz.ethz.ch>, Jonas Grossmann <jg@fgcz.ethz.ch>,
     Witold E. Wolski <wew.ethz.ch>
 Maintainer: Jonas Grossmann <jg@fgcz.ethz.ch>
@@ -10,7 +10,8 @@ Depends:
     R (>= 3.3),
     methods,
     protViz,
-    plyr
+    plyr,
+    knitr
 Imports:
     protViz,
     lattice,
