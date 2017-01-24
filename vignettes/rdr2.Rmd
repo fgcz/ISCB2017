@@ -5,6 +5,11 @@ date: "January 21, 2017"
 output: 
   - slidy_presentation
   - rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{LabelFreeQuantification}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+
 ---
 
 
@@ -27,7 +32,7 @@ library(ISCB2017)
 
 # Overview R
 
-- data frames
+- data frames (factor and character) stringAsFactors = FALSE
 - tabulating data `table`
 - subsetting data frames using `subset` and `[]`
 - aggregating data using plyr (`ddply`)
@@ -44,7 +49,7 @@ prots <- peptide_proteinAnnotation
 
 ```
 
-# Number of PSMs per Protein
+# Number of Proteins per Protein
 
 
 ```{r fig.cap="number of PSMs per protein"}
@@ -316,4 +321,6 @@ length(setdiff(GlucdataProt2$proteinID, GlucdataProt0.01$proteinID))
 length(setdiff(GlucdataProt0.01$proteinID,GlucdataProt2$proteinID ))
 
 ```
+
+# Questions?
 
