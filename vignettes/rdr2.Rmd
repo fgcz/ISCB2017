@@ -1,12 +1,12 @@
 ---
-title: "FDR - false discovery rate estimation from decoys"
+title: "FDR - False Discovery Rate estimation using decoys"
 author: "Witold Wolski"
 date: "January 21, 2017"
 output: 
   - slidy_presentation
   - rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{LabelFreeQuantification}
+  %\VignetteIndexEntry{FDR - False Discovery Rate estimation}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 
