@@ -26,7 +26,7 @@ Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible
 2 | The FGCZ in Zurich | browse FGCZ page | 0.5 h | jg
 3 | Mass spectrometry (and protein analytics) | browse around for milestones in MS, form groups, introduce yourself and your task | 1 h | jg 
 4 | Getting ready for hands-on sessions | Install MQ, do git co, commits, get R packages | 1 h | CP
-5 | [PSM identification with protViz](vignettes/peakplot.Rmd) | get fasta, R (seqinR), R (digest), theoretical considerations about search space, different DBs, uniqueness of peptides.  | 2.5h | CP 
+5 | [PSM identification with protViz](vignettes/peakplot.Rmd) | [get fasta, R (seqinR), R (digest), theoretical considerations about search space, different DBs, uniqueness of peptides.](vignettes/peakplot.Rmd)  | 2.5h | CP 
 6 | Protein identification VALIDATION with target-decoy strategy | [FDR](vignettes/fdr.Rmd)  | 2h | WEW 
 7 | Start your own MQ | run it on your PC | 1h | jg
 8 | Conclusion of day 1 | Q & A | 1h | all
@@ -39,7 +39,7 @@ Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible
 ------------ |------------ | ------------- | ------------- | ------------- 
 1 | Repetition of Day 1 | Q & A | 0.5 h | all
 2 | About Plots | coffee break | 0.5 h | JG
-3 | Protein, Peptide, Mass-spec view and [LFQ](vignettes/lfq.Rmd)  | Manual LFQ n testing w cp | 3h | JG/CP
+3 | Protein, Peptide, Mass-spec view and LFQ  | [hands-on LFQ](vignettes/lfq.Rmd) | 3h | JG/CP
 4 | Experimental design in quant experiments | Looking at annotation of samples in Bfabric | 1h | jg
 5 | Two group analysis for Yeast, grown on different nutrient sources | Analysing 2 groups in R-quantable | 2h | WEW
 6 & 7 | Principle of ORA and Webtools for model organisms |  Webgestalt, StringDB, YeastCyc w YEAST results | 2h | cpNjg 
