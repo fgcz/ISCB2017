@@ -87,14 +87,11 @@ install.packages('protViz')
 * contains data and code for hands-on-session
 
 ```{r eval=FALSE}
-# urlget
 install.packages('ISCB2017')
 ```
 
 ```{r echo=TRUE}
 library(ISCB2017)
-```
-
 ```
 
 # Amino Acids (AA)
