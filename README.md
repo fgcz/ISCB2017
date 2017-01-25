@@ -5,7 +5,9 @@ a Pigeon Pea (Cajanus cajan) project from the Indo-Swiss Collaboration in Biotec
 training course on proteome informatics given 
 from January 21th to January 25th  2017 at the
 Indian Agricultural Research Institute in New Delhi-110012 by 
-JG, WEW, and CP.
+[JG](http://www.fgcz.ch/the-center/people/grossmann.html), 
+[WEW](http://www.fgcz.ch/the-center/people/wolski.html), and 
+[CP](http://www.fgcz.ch/the-center/people/panse.html).
 
 ##Overview of the week
 
