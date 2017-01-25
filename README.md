@@ -79,7 +79,17 @@ http://fgcz-bfabric.uzh.ch/bfabric/userlab/show-project.html?projectId=2364
 
 ## Notes by CP
 
-# Howto build the ISCB2017 R package
+# Howto 
+
+## install the ISCB2017 R package
+
+```{r}
+install.packages('devtools')
+library(devtools)
+install_git('https://github.com/fgcz/ISCB2017')
+```
+
+## build the ISCB2017 R package
 
 ```{r}
 roxygen2::roxygenise()
