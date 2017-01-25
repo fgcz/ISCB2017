@@ -30,8 +30,8 @@ Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible
 Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible Person
 ------------ |------------ | ------------- | ------------- | ------------- 
 1 | Repetition of Day 1 | Q & A | 0.5 h | all
-2 | About Plots | coffee break | 0.5 h | WEW
-3 | Protein, Peptide, Mass-spec view and [LFQ](vignettes/lfq.Rmd)  | Manual LFQ n testing w cp | 2h | jg & cp
+2 | About Plots | coffee break | 0.5 h | JG
+3 | Protein, Peptide, Mass-spec view and [LFQ](vignettes/lfq.Rmd)  | Manual LFQ n testing w cp | 2h | CP
 4 | Experimental design in quant experiments | Looking at annotation of samples in Bfabric | 1h | jg
 5 | Two group analysis for Yeast, grown on different nutrient sources | Analysing 2 groups in R-quantable | 2h | WEW
 6 & 7 | Principle of ORA and Webtools for model organisms |  Webgestalt, StringDB, YeastCyc w YEAST results | 2h | cpNjg 
@@ -91,7 +91,17 @@ roxygen2::roxygenise()
 ```
 
 
+## read the vignettes
 
+```{r}
+# get an overview 
+library(ISCB)
+
+vignette(package="ISCB")
+vignette('peakplot')
+vignette('fdr')
+vignette('lfq')
+```
 # Notes by CP
 
 ## References for R
