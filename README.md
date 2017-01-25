@@ -74,12 +74,7 @@ http://fgcz-bfabric.uzh.ch/bfabric/userlab/show-project.html?projectId=2364
 - MSQC1 -> https://www.ncbi.nlm.nih.gov/pubmed/27130639
 - Top3 Protein quantification -> https://www.ncbi.nlm.nih.gov/pubmed/20576481
 
-
-
-
-## Notes by CP
-
-# Howto 
+# Howtos
 
 ## install the ISCB2017 R package
 
@@ -95,10 +90,13 @@ install_git('https://github.com/fgcz/ISCB2017')
 roxygen2::roxygenise()
 ```
 
-### add visualization techniques 15min from combined course 
-- plus t-test alternative for boxplot N(0,1) distribution example. 
 
-### References
+
+# Notes by CP
+
+## References for R
+
+- [An Introduction to R](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf)
 - Visualizing data, William S. Cleveland, Murray Hill, New Jersey : AT&T Bell Laboratories 1993
 - Lattice, Multivariate Data Visualization with R, Deepayan Sarkar , 2008
 - Volcano Plot -> https://www.ncbi.nlm.nih.gov/pubmed/27272648
