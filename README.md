@@ -1,5 +1,12 @@
 # ISCB2017 - Workshop for Proteomics Data Analysis and Bioinformatics
 
+This R package contains data and vignette files for 
+a Pigeon Pea (Cajanus cajan) project from the Indo-Swiss Collaboration in Biotechnology (ISCB) 
+training course on proteome informatics given 
+from January 21th to January 25th  2017 at the
+Indian Agricultural Research Institute in New Delhi-110012 by 
+JG, WEW, and CP.
+
 ##Overview of the week
 
 ## Day 1 (Common Day)
