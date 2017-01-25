@@ -11,144 +11,170 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+
+# load reqired R libraries
+
 ```{r}
 library(ISCB2017)
-```
-
-```{r echo=FALSE}
-plot.psmSet <- function (x, iRTpeptides = specL::iRTpeptides, ...) 
-{
-    rt <- unlist(lapply(x, function(x) {
-        x$rt
-    }))
-    pepmass <- unlist(lapply(x, function(xx) {
-        xx$pepmass
-    }))
-    peptide <- unlist(lapply(x, function(xx) {
-        xx$peptideSequence
-    }))
-    idx.iRT <- which(peptide %in% iRTpeptides$peptide)
-    charge <- unlist(lapply(x, function(xx) {
-        xx$charge
-    }))
-    filename <- as.numeric(as.factor(unlist(lapply(x, function(xx) {
-        xx$fileName
-    }))))
-    plot(pepmass ~ rt, pch = filename, col = charge, main = "LCMS map", 
-        xlab = "retention time", ylab = "peptide mass", ...)
-    cc <- sort(unique(charge))
-    legend("topleft", "iRT peptides", pch = 22)
-    legend("left", paste(cc, "+", sep = ""), col = cc, pch = 22, 
-        title = "charge")
-    text(rt, pepmass, 1:length(rt), pos = 3, col = charge, cex = 0.5)
-    fn <- unique(unlist(lapply(x, function(xx) {
-        xx$fileName
-    })))
-    n <- nchar(fn)
-    #legend("bottomright", substr(fn, n - 25, n), pch = unique(filename), 
-    #    cex = 1, title = "input file names")
-    points(rt[idx.iRT], pepmass[idx.iRT], pch = 22, cex = 2)
-}
-```
-
-```{r}
-#library(specL)
-library(ISCB2017)
-```
-
-
-# consideration
-
-```{r}
-#filename <- paste(path.package("ISCB2017"), "extdata/proteotypic_peptides.txt", sep='/')
-#P <- read.table(filename, col.names=c('protein','peptide','pim'))
-
-#load("data/F244088f.RData")
-```
-
-# plot filtered LCMS map
-```{r}
-data(F244088f)
-
-plot.psmSet(F244088f)
-```
-
-
-## xic
-
-get RT
-
-```{r fig.retina=3}
+library(knitr)
 library(lattice)
-xyplot(peptide ~ rt | filename, group=grepl('GE', filename),
+```
+
+# focus on proteins (peptides)
+
+```{r}
+unique(XIC$protein)
+unique(XIC$peptide
+       )
+```
+
+# Howto extract XIC data?
+
+https://biblio.ugent.be/publication/8502633
+
+```{r fig.retina=3, fig.height=4}
+dim(XIC)
+table(XIC$filename)
+table(XIC$protein)
+table(XIC$peptide)
+
+xic.filter <- XIC$filename == '20161115_13_G1_b.raw' & XIC$peptide == 'IFTVPTETLQAVTK'
+
+lattice::xyplot(count ~ rt | as.character(charge) * filename, 
+    data = XIC, 
+    subset = xic.filter, #(XIC$peptide == 'IFTVPTETLQAVTK'),
+    type = 'h')
+
+lattice::xyplot(count ~ rt | as.character(charge) * filename, 
+    data = XIC, 
+    subset = xic.filter, #(XIC$peptide == 'IFTVPTETLQAVTK'),
+    xlim=c(62,65),
+    type = 'h')
+```
+
+# plot filtered LC-MS map 
+
+```{r fig.retina=3, fig.height=20}
+peptide.rt$pim <- sapply(as.character(peptide.rt$peptide), parentIonMass)
+lattice::xyplot(pim ~ rt, 
+       group = filename, 
+       data=peptide.rt,
+       auto.key =TRUE)
+```
+
+
+# XIC
+
+reqirement: query RT for every peptide and every LC-MS run
+
+```{r fig.retina=3, fig.width=16, fig.height=12}
+lattice::xyplot(peptide ~ rt | filename, 
+       group=grepl('GE', filename),
        data = peptide.rt)
 ```
 
 
+
+# Find for each LC-MS run the RT of the corresponding peptide
+
 ```{r}
-pmax <- aggregate(score ~ filename + peptide, FUN=max, data=peptide.rt)
+pmax <- aggregate(score ~ filename + peptide, 
+                  FUN=max, 
+                  data=peptide.rt)
+
 peptide.rt.max <- merge(peptide.rt, pmax, by=c('peptide', 'filename', 'score'))
-
-
-XIC.rt <- merge(XIC, peptide.rt.max, by=c('peptide', 'filename'))
-
-head(XIC.rt)
-
-#t <- trellis.par.get()
-#t$superpose.line$alpha<-0.1
-#t$superpose.symbol$alpha<-0.1
-#trellis.par.set(t)
-#lapply(unique(XIC$protein), function(p){
-#  XIC.f <- XIC.id[XIC.id$protein == p,]
-#  xyplot(count ~ rt | peptide * protein, 
-#         group=filename, 
-#         data=XIC.f, type='h', subset=protein==p,
-#      layout=c(1, 4))})
 ```
 
+```{r eval=FALSE}
+View(peptide.rt.max)
+```
+
+# merge and filter XIC and RT
+
 ```{r}
+dim(XIC)
+dim(peptide.rt.max)
+XIC.rt <- merge(XIC, peptide.rt.max, by=c('peptide', 'filename'))
+dim(XIC.rt)
+
 eps <- 0.5
-
-XIC.rt.filtered <- XIC.rt[XIC.rt$rt.y - eps < XIC.rt$rt.x & XIC.rt$rt.x < XIC.rt$rt.y + eps, ] 
-
+filter <- XIC.rt$rt.y - eps < XIC.rt$rt.x & XIC.rt$rt.x < XIC.rt$rt.y + eps
+XIC.rt.filtered <- XIC.rt[filter, ] 
+dim(XIC.rt.filtered)
 
 #library(lattice())
 #xyplot(log(count,2) ~ rt|protein ,group=charge, data=XIC.f[grepl("20161115_12_GE1_b.raw", XIC.f$filename),], type='h')
-
-
-
 ```
 
-```{r}
+# Determine the max peak of each peptide
+
+```{r fig.retina=3}
 XIC.max <- aggregate(count ~ protein + peptide + charge + filename, 
                      data=XIC.rt.filtered, FUN=max)
+
+bwplot(count ~ filename  | protein * grepl('GE', filename),
+        data=XIC.max,
+        scales = list(x = list(rot = 45)))
+
+
+bwplot(log(count) ~ filename  | protein * grepl('GE', filename),
+        data=XIC.max,
+        scales = list(x = list(rot = 45)))
+
 
 bwplot( (log(count)-mean(log(count)))/sd(log(count)) ~ filename  | protein * grepl('GE', filename),
         data=XIC.max,
         scales = list(x = list(rot = 45)))
+```
 
-  
+
+# long to wide
+
+```{r}
+head(XIC.max)
 M <- reshape2::dcast(XIC.max, formula = protein + peptide + charge ~ filename)
-
+head(M)
 rownames(M) <-paste(M[,1], M[,2], M[,3])
 M[,1:3] <- NULL
 M[is.na(M)] <- 0
+```
+
+```{r eval=FALSE}
+View(M)
+```
+
+
+```{r}
+S.sum <- aggregate(count ~ protein + grepl('GE', filename) + filename, data=XIC.max, FUN=sum)  
+
+S.max <- aggregate(count ~ protein + grepl('GE', filename) + filename, data=XIC.max, FUN=max)
+
+S.mean <- aggregate(count ~ protein + grepl('GE', filename) + filename, data=XIC.max, FUN=mean)  
+
+bwplot(log(S.sum$count) ~ S.sum$protein| grepl('GE', S.sum$filename),layout=c(2,1))
+bwplot(log(S.mean$count) ~ S.mean$protein| grepl('GE', S.mean$filename),layout=c(2,1))
+bwplot(log(S.max$count) ~ S.max$protein| grepl('GE', S.max$filename),layout=c(2,1))
+```
+
+```{r fig.retina=3}
 image(t(as.matrix(asinh(M))))
+```
 
-
+```{r fig.retina=3, fig.height=8}
 library(gplots)
-heatmap.2(asinh(as.matrix((M))), margins = c(20,15), trace = "none")
-#XIC.max <- merge(XIC, XIC.max, by.x=names(XIC.max), by.y = names(XIC.max))
+gplots::heatmap.2(asinh(as.matrix((M))), margins = c(20,15), trace = "none")
 ```
 
 # RT normalization
 
-
 http://bioconductor.org/packages/release/data/experiment/vignettes/msqc1/inst/doc/chromatography.html
 
 # Two Group
+
+lets switch to mq data ...
+
+
 ```{r fig.retina=3}
-#S <- read.table("data/p1946_prx.tsv", sep='\t', header=TRUE)
 gg <- c(rep('G', 6), rep('GE', 6))
 dim(prxmq)
 table(gg)
@@ -192,18 +218,20 @@ expression_analysis <- function(S, groups){
   S.t.test
 }
 
+SwissProtID <- sapply(strsplit (as.character(unique(XIC$protein)), split='_'), function(x){x[1]}) 
+sp_filter <- grepl(paste(SwissProtID, collapse ='|'), rownames(prxmq))
 
-S.t.test <- expression_analysis(prxmq, gg)
-head(S.t.test)
+S.t.test <- expression_analysis(prxmq[sp_filter,], gg)
+S.t.test
 ```
 
 # volcano plot - p.value vs FC
 
 ```{r fig.retina=3}
-plot_volcano <- function(S.t.test){
-  plot(-log(p.value,10) ~ FC, data=S.t.test, 
+plot_volcano <- function(S.t.test, label=FALSE, ...){
+  plot(-log(p.value,10) ~ FC, data=S.t.test,
        main="volcano plot",
-       sub="p1946 prx")
+       sub="p1946 prx", ...)
   abline(v=c(-0.5,0.5), col='grey')
   abline(h=-log(0.025, 10), col='grey')
   
@@ -219,9 +247,20 @@ plot_volcano <- function(S.t.test){
          data=S.t.test[grepl('REV', rownames(S.t.test)),],
          cex=2, lwd=2,
          col='green')
+  if(label){
+    text(S.t.test$FC, -log(S.t.test$p.value,10), rownames(S.t.test), cex=0.5, pos=3)
+  }
 }
 
-plot_volcano(S.t.test)
+plot_volcano(S.t.test, xlim=c(-10,10))
+```
+
+# take all proteins
+
+
+```{r}
+S.t.test <- expression_analysis(prxmq, gg)
+plot_volcano(S.t.test, xlim=c(-10,10), label = FALSE)
 ```
 
 # What happen if you mess up your annotation?
