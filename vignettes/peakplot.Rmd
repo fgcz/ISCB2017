@@ -14,12 +14,12 @@ vignette: >
 
 # FASTA - get current SwissProt
 
-```{bash}
+```{bash eval = FALSE}
 #export PATH=$PATH:~/bin/
 echo $PATH
 ```
 
-```{bash}
+```{bash eval = FALSE}
 test -f swissprot \
 || curl ftp://ftp.uniprot.org/pub/databases/uniprot/\
 current_release/knowledgebase/complete/uniprot_sprot.fasta.gz \
@@ -28,12 +28,12 @@ current_release/knowledgebase/complete/uniprot_sprot.fasta.gz \
 ```
 
 
-```{bash}
+```{bash eval = FALSE}
 head swissprot
 ```
 
 # Top ten organisms having the largest number of entries in swissprot
-```{bash}
+```{bash eval = FALSE}
 grep "^>" < swissprot \
 | awk '$1~/_/{print $1}' \
 | awk -F"_" '{h[$NF]++}END{for (i in h){print i" "h[i]}}' \
@@ -45,7 +45,8 @@ grep "^>" < swissprot \
 
 cut after R or K if the C-term. residue is not P.
 
-```{bash}
+```{bash eval = FALSE}
+grep "^>" < swissprot \
 grep "^>sp|P21781|FGF7_HUMAN" -A 1 < swissprot \
 | fcat \
 | tryptic-digest 
@@ -55,7 +56,7 @@ grep "^>sp|P21781|FGF7_HUMAN" -A 1 < swissprot \
 
 tryptic digest rule: cut after R or K if the C-term. residue is not P.
 
-```{bash}
+```{bash eval = FALSE}
 grep "^>sp|P21781|FGF7_HUMAN" -A 5 < swissprot \
 | fcat \
 | tryptic-digest \
