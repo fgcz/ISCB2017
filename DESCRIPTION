@@ -9,6 +9,7 @@ Maintainer: Jonas Grossmann <jg@fgcz.ethz.ch>
 Depends:
     R (>= 3.3),
     methods,
+    devtools,
     protViz,
     plyr,
     knitr
