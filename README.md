@@ -1,4 +1,4 @@
-# ISCB2017
+# ISCB2017 - Workshop for Proteomics Data Analysis and Bioinformatics
 
 ##Overview of the week
 
