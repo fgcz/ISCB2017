@@ -88,7 +88,7 @@ http://fgcz-bfabric.uzh.ch/bfabric/userlab/show-project.html?projectId=2364
 ```{r}
 install.packages('devtools')
 library(devtools)
-install_git('https://github.com/fgcz/ISCB2017')
+install_git('https://github.com/fgcz/ISCB2017', build_vignettes = TRUE)
 ```
 
 ## build the ISCB2017 R package
@@ -104,7 +104,7 @@ roxygen2::roxygenise()
 # get an overview 
 library(ISCB)
 
-vignette(package="ISCB")
+vignette(package="ISCB2017")
 vignette('peakplot')
 vignette('fdr')
 vignette('lfq')
