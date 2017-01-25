@@ -63,25 +63,6 @@ Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible
 - equiped with: Editor (vi, nano, ..), R., RStudio, git
 - some free space (20gigs at least)
 
-
-## Participants
-
-no.	| 	Name	Academic Qualification	| 	In Bfabric @ p2364	| 	E-mail
------------- |------------ | ------------- | -------------
-1.		| Dr. (Ms.) Yasin Jeshima	Ph. D.		| YES		| jeshimakhanyasin@gmail.com
-2.		| 	Dr. (Ms.) Neha Jain	Ph. D.		| YES	| 	jain19neha@gmail.com
-3.		| Dr. (Ms.) Sangeeta Singh	Ph. D.	| 	YES	| 	sangeeta10mar@gmail.com
-4.		| 	Dr. Bikram Pratap Singh	Ph. D.	| 	YES	| 	bikrambotany@gmail.com
-5.		| 	Mr. R. Maniraj	M. Phil.	| 	YES	| 	rmani607@gmail.com
-6.		| 	Ms. Madhurima Chatterjee	M. Tech.	| 	YES	| 	mchatterjee008@gmail.com
-7.		| 	Mr. Ajay  Kumar Mehto	M. Sc.	| 	YES		| ajaybioinfo@gmail.com
-8.		| 	Ms. Sufiya Farhat	M. Sc.	| 	YES	| 	farhatsophie@gmail.com
-9.		| 	Ms. Pragya Mishra	M. Sc.	| 	YES	| 	pragya.bioinfo@gmail.com
-10.	| 		Mr. P. Pradeep	M. Sc.		| NO		| pradeep.papolu@gmail.com
-11.	| 		Ms. Shweta Singh	M. Sc.	| 	YES		| shwetaasinngh@gmail.com
-12.	| 		Ms. Preeti Nandi	M. Sc.	| 	NO		| Reddypreethi.reddy@gmail.com
-13.	| 		Ms. Nisha Singh	M.Sc.	| 	YES	| 	singh.nisha88@gmail.com
-
 ## Bfabric Project
 http://fgcz-bfabric.uzh.ch/bfabric/userlab/show-project.html?projectId=2364
 
