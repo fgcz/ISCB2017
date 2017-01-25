@@ -88,7 +88,7 @@ http://fgcz-bfabric.uzh.ch/bfabric/userlab/show-project.html?projectId=2364
 ```{r}
 install.packages('devtools')
 library(devtools)
-install_git('https://github.com/fgcz/ISCB2017', build_vignettes = TRUE)
+install_git('https://github.com/fgcz/ISCB2017', build_vignettes = TRUE, quiet = FALSE)
 ```
 
 ## build the ISCB2017 R package
