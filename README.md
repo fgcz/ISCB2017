@@ -1,4 +1,4 @@
-# ISCB2017 - Workshop for Proteomics Data Analysis and Bioinformatics
+# ISCB2017 - Workshop for Proteomics Data Analysis and Bioinformatics ([p2364](http://fgcz-bfabric.uzh.ch/bfabric/userlab/show-project.html?projectId=2364))
 
 This R package contains data and vignette files for 
 a Pigeon Pea (Cajanus cajan) project from the Indo-Swiss Collaboration in Biotechnology (ISCB) 
