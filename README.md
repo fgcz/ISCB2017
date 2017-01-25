@@ -53,10 +53,10 @@ Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible
 Module Number | Theoretical Part | Hands-on Module | Duration | Main responsible Person
 ------------ |------------ | ------------- | ------------- | ------------- 
 1 | Repetition of Day 3 | Q & A | 0.5 h | all
-2 | fun with R |  | 1.0 h | CP/WEW
-3 | blast |  | .4 h | CP
-3 | Look at the Pigeon Pea project | Make use of what we learnt in the pigeon pea project | 3h | all
-4 | Wrap up of the course | Course Evaluation | 1h | all
+2 | fun with | R [CRAN](https://cran.r-project.org/) & [bioc](http://bioconductor.org/) | 1.0 h | CP/WEW
+3 | blast |  | 0.3 h | CP
+4 | Look at the Pigeon Pea project | Make use of what we learnt in the pigeon pea project | 3h | all
+5 | Wrap up of the course | Course Evaluation | 1h | all
  
 
 
