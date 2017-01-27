@@ -47,3 +47,45 @@ nice -19 /scratch/ncbi-blast-2.5.0+/bin/blastp \
 -y annotated/PigeonPea_V5_soybean.yaml \
 > annotated/PigeonPea_V5_soybean.fasta
 ```
+
+# check
+
+```
+cpanse@fgcz-s-028:/scratch/ISCB2017/data/fasta > head  annotated/PigeonPea_V5_soybean.fasta                                                                                                                                                   
+>C.cajan_46707  [mRNA]  locus=Scaffold122073:102:323:- [translate_table: standard]  NO HIT
+NHRTSFSPSRSVSDTIREILIADRCPCRFVYLNLAVSPEILIGGRESSSG
+SGVMLWSSQTTPRISLGLYQSLM
+>C.cajan_46708  [mRNA]  locus=Scaffold134967:4061:4426:+ [translate_table: standard]    BLASTORTHO      tr|K7KXT1|K7KXT1_SOYBN  evalue=1.60828e-06
+FHGHAGEDPHKHLKEFHIVCSTMKPLDVQEDHIYLKAVPHSLEGVAKDWL
+YYLAPRSITSWDDLKRMFLEKFFPASRTTIIKKDISWIRQLGGESLYEYW
+ERFKKLCASYPHHQISEQLLL
+>C.cajan_46709  [mRNA]  locus=Scaffold137583:811:1854:+ [translate_table: standard]     BLASTORTHO      tr|K7LIL4|K7LIL4_SOYBN  evalue=1.18768e-58
+MYWWTTLVRESRLHNDPPIACWNDLRSAMRRRHIPSYYSRELMDKLQRLQ
+QRNLSMDEYRQKMELYLMRAGIREEERLTIARFLRRGHIASQCPTKKTMI
+```
+
+
+
+```
+cpanse@fgcz-s-028:/scratch/ISCB2017/data/fasta > head -n 20  annotated/PigeonPea_V5_soybean.yaml 
+C.cajan_00001:
+- evalue: 2.33747
+  title: tr|I1JCS7|I1JCS7_SOYBN Uncharacterized protein OS=Glycine max GN=GLYMA_02G059000
+    PE=3 SV=1
+- evalue: 3.16598
+  title: tr|A0A0R0EF23|A0A0R0EF23_SOYBN Uncharacterized protein OS=Glycine max GN=GLYMA_U018400
+    PE=4 SV=1
+- evalue: 9.57431
+  title: tr|K7K7T6|K7K7T6_SOYBN Uncharacterized protein OS=Glycine max GN=GLYMA_02G116800
+    PE=4 SV=1
+- evalue: 9.97808
+  title: tr|I1N9R3|I1N9R3_SOYBN Uncharacterized protein OS=Glycine max GN=GLYMA_19G165000
+    PE=4 SV=1
+C.cajan_00002:
+- evalue: 0.67747
+  title: tr|K7K7T6|K7K7T6_SOYBN Uncharacterized protein OS=Glycine max GN=GLYMA_02G116800
+    PE=4 SV=1
+- evalue: 0.91353
+  title: tr|K7M5R6|K7M5R6_SOYBN Uncharacterized protein OS=Glycine max GN=GLYMA_U029000
+    PE=4 SV=1
+```
