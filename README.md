@@ -117,8 +117,8 @@ vignette('lfq')
 ## References for R
 
 - [An Introduction to R](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf)
-- Visualizing data, William S. Cleveland, Murray Hill, New Jersey : AT&T Bell Laboratories 1993
-- Lattice, Multivariate Data Visualization with R, Deepayan Sarkar , 2008
-- Volcano Plot -> https://www.ncbi.nlm.nih.gov/pubmed/27272648
+- Visualizing data, William S. Cleveland, Murray Hill, New Jersey: AT&T Bell Laboratories 1993
+- [Lattice, Multivariate Data Visualization with R, Deepayan Sarkar , 2008](http://www.springer.com/de/book/9780387759685)
+- [Uses and misuses of the fudge factor in quantitative discovery proteomics.](https://www.ncbi.nlm.nih.gov/pubmed/27272648)
 
 
