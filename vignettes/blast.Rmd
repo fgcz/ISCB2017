@@ -91,3 +91,7 @@ C.cajan_00002:
   title: tr|K7M5R6|K7M5R6_SOYBN Uncharacterized protein OS=Glycine max GN=GLYMA_U029000
     PE=4 SV=1
 ```
+
+# results
+
+http://fgcz-s-021.uzh.ch/fasta/p2147_db4_PigeonPea_NGS_SoybeanBlast_20170127.fasta
