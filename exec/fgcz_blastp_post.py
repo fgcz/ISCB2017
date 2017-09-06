@@ -93,20 +93,19 @@ class FgczBlastp:
             yaml.safe_dump(self.alternativeDict, outfile, default_flow_style=False, default_style='')
 
     def annotate(self, fasta_filename):
-
-        #fastaregex = re.compile(">([-|\._\w]+)\s+.+$")
-        #fastaregex = re.compile(">([-\.a-zA-Z0-9_]+)\s+.+$")
+        # fastaregex = re.compile(">([-|\._\w]+)\s+.+$")
+        # fastaregex = re.compile(">([-\.a-zA-Z0-9_]+)\s+.+$")
 
         with open(fasta_filename) as fasta:
             for l in fasta:
                 if l.startswith(">"):
-                    res = self.fastaregex.match(l)
-                    #print res.group(1)
-                    if self.queryDict.has_key(res.group(1)):
+                    res = self.fastaregex.match(l)            
+
+                    if res and self.queryDict.has_key(res.group(1)):
                         print "{}\tBLASTORTHO\t{}\tevalue={}".format(l.rstrip(), self.queryDict[res.group(1)],
-                                                         self.queryEvalueDict[res.group(1)])
+                            self.queryEvalueDict[res.group(1)])
                     else:
-                        print "{}  NO HIT".format(l.rstrip())
+                        print l.rstrip()
                 else:
                     print l.rstrip()
 
